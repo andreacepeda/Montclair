@@ -1,4 +1,5 @@
 // replace real cd pics w digitals 
+// gallery & band mention w random information 
 
 import { useState, useEffect, useRef } from "react";
 
