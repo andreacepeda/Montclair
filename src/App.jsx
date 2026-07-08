@@ -1,6 +1,3 @@
-// replace real cd pics w digitals 
-// gallery & band mention w random information 
-
 import { useState, useEffect, useRef } from "react";
 
 const FONT = "'Menlo', monospace";
@@ -46,55 +43,398 @@ const SHOWS = [
     mapsLink: "https://luma.com/skh8jmci?utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&utm_medium=social&utm_source=ig",
   },
   {
-    date: "Aug 2, 2026",
+    date: "December 2, 2026",
     venue: "evil venue",
     city: "Orlando, FL",
     mapsLink: null,
   },
 ];
 
-// merch section 
-// maybe add multiple images 
 const MERCH = [
   {
     id: "shirt",
     name: "Montclair is for Lovers Shirt",
     price: "$25",
-    stripeLink: "",    // need 2 put real link here fakkkk
-    imgs: [
-      "/MontclairShirt.JPG",
-      "/montclairtee.JPG",
-    ],
-    description:
-      "a way for those who don't have a cd or cassette player to be included.",
+    stripeLink: "",
+    imgs: ["/MontclairShirt.JPG", "/montclairtee.JPG"],
+    description: "a way for those who don't have a cd or cassette player to be included.",
   },
   {
     id: "cd",
     name: "Montclair EP — CD",
     price: "$10",
-    stripeLink: "",       // needs link
-    imgs: [
-      "/CDFront.JPG",
-      "/CDBack.JPG"
-    ],
-    description:
-      "4 cool tracks for you to enjoy, if you have a cd player.",
+    stripeLink: "",
+    imgs: ["/CDFront.JPG", "/CDBack.JPG"],
+    description: "4 cool tracks for you to enjoy, if you have a cd player.",
   },
   {
     id: "cassette",
     name: "Montclair EP — Cassette",
     price: "$10",
-    stripeLink: "", // talk about stripe implementation, walk thru,  
-    imgs: [
-      "/CassetteFront.JPG",
-      "/CassetteBack.JPG",
-    ],
-    description:
-      "4 cool tracks for you to enjoy, if you have a cassette player.",
+    stripeLink: "",
+    imgs: ["/CassetteFront.JPG", "/CassetteBack.JPG"],
+    description: "4 cool tracks for you to enjoy, if you have a cassette player.",
   },
 ];
 
-const MERCH_EMAIL = "bandmontclair@gmail.com"; // still need to mess around w this shit
+const GALLERY = [
+  {
+    id: 1,
+    imgs: ["/SillyBand.JPG"],
+    description: "Five veterans post war",
+    date: "05-08-2026",
+  },
+  {
+    id: 2,
+    imgs: ["/Balloons.JPG"],
+    description: "********",
+    date: "05-01-2026",
+  },
+  {
+    id: 3,
+    imgs: ["/Candid.JPG"],
+    description: "#show",
+    date: "05-08-2026",
+  },
+  {
+    id: 4,
+    imgs: ["/guitar.JPG"],
+    description: "and we all said thank you *****",
+    date: "05-08-2026",
+  },
+  {
+    id: 5,
+    imgs: ["/anotherCandid.JPG"],
+    description: "**insert classic one liner",
+    date: "05-08-2026",
+  },
+  {
+    id: 6,
+    imgs: ["/bandBattles.JPG"],
+    description: "post set band pic",
+    date: "05-08-2026",
+  },
+  {
+    id: 7,
+    imgs: ["/areaClosed.JPG"],
+    description: "******",
+    date: "04-19-2026",
+  },
+  {
+    id: 8,
+    imgs: ["/redNwhite.JPG"],
+    description: "******",
+    date: "02-22-26",
+  },
+  {
+    id: 9,
+    imgs: ["/redNwhite2.JPG"],
+    description: "******",
+    date: "02-22-2026",
+  },
+  {
+    id: 10,
+    imgs: ["/bob.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 11,
+    imgs: ["/bobfull.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 12,
+    imgs: ["/bobset.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 13,
+    imgs: ["/bobfull3.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 14,
+    imgs: ["/bobdrums.JPG"],
+    description: "***",
+    date: "02-28-2026",
+  },
+  {
+    id: 15,
+    imgs: ["/bobfull2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 16,
+    imgs: ["/bobfull4.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 17,
+    imgs: ["/bobdrums2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 18,
+    imgs: ["/bobdrums3.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 19,
+    imgs: ["/bobadjust.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 20,
+    imgs: ["/bobadjust2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 21,
+    imgs: ["/bobadjust3.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 22,
+    imgs: ["/bobadjust4.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 23,
+    imgs: ["/bobsolo.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 24,
+    imgs: ["/bobsolo2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 25,
+    imgs: ["/bobsolo3.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 26,
+    imgs: ["/bobsolo4.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 27,
+    imgs: ["/bobsolo5.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 28,
+    imgs: ["/bobsolo6.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 29,
+    imgs: ["/m4lshirt.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 30,
+    imgs: ["/m4lshirt2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 31,
+    imgs: ["/m4lshirt3.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 32,
+    imgs: ["/bobsolo7.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 33,
+    imgs: ["/bobsolo8.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 34,
+    imgs: ["/bobsolo9.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 35,
+    imgs: ["/bobset2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 36,
+    imgs: ["/bobset3.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 37,
+    imgs: ["/bobadjust5.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 38,
+    imgs: ["/bobsolo10.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 39,
+    imgs: ["/bobset4.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 40,
+    imgs: ["/bobsolo12.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 41,
+    imgs: ["/bobset5.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 42,
+    imgs: ["/m4ldigi.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 43,
+    imgs: ["/m4ldigi2.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 44,
+    imgs: ["/boblawn.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 45,
+    imgs: ["/bobset6.JPG"],
+    description: "******",
+    date: "02-28-2026",
+  },
+  {
+    id: 46,
+    imgs: ["/laundromog.JPG"],
+    description: "******",
+    date: "02-12-2026",
+  },
+  {
+    id: 47,
+    imgs: ["/laundromog2.JPG"],
+    description: "******",
+    date: "02-12-2026",
+  },
+  {
+    id: 48,
+    imgs: ["/sleepy.JPG"],
+    description: "******",
+    date: "05-09-2026",
+  },
+  {
+    id: 49,
+    imgs: ["/sleepy2.JPG"],
+    description: "******",
+    date: "05-09-2026",
+  },
+  {
+    id: 50,
+    imgs: ["/balloons2.JPG"],
+    description: "******",
+    date: "05-01-2026",
+  },
+  {
+    id: 51,
+    imgs: ["/notes.JPG"],
+    description: "******",
+    date: "05-04-2026",
+  },
+  {
+    id: 52,
+    imgs: ["/balloons3.JPG"],
+    description: "******",
+    date: "05-08-2026",
+  },
+  {
+    id: 53,
+    imgs: ["/piano.JPG"],
+    description: "******",
+    date: "06-10-2026",
+  },
+  {
+    id: 54,
+    imgs: ["/piano2.JPG"],
+    description: "******",
+    date: "06-11-2026",
+  },
+  {
+    id: 55,
+    imgs: ["/swan.JPG"],
+    description: "******",
+    date: "04-19-2026",
+  },
+  {
+    id: 56,
+    imgs: ["/tree.JPG"],
+    description: "******",
+    date: "04-19-2026",
+  },
+  {
+    id: 57,
+    imgs: ["/tree2.JPG"],
+    description: "******",
+    date: "04-19-2026",
+  },
+  {
+    id: 58,
+    imgs: ["/notes2.JPG"],
+    description: "******",
+    date: "04-25-2026",
+  },
+  {
+    id: 59,
+    imgs: ["/gatsoriginal.JPG"],
+    description: "******",
+    date: "06-05-2026",
+  },
+];
+
+const MERCH_EMAIL = "bandmontclair@gmail.com";
 
 function fmt(s) {
   const m = Math.floor(s / 60);
@@ -102,32 +442,85 @@ function fmt(s) {
   return `${m}:${sec}`;
 }
 
-// merch deets
-function MerchDetail({ item, onBack }) {
-  const [activeImg, setActiveImg] = useState(0);
+function Slideshow({ items, startIndex, onClose }) {
+  const [index, setIndex] = useState(startIndex);
+  const item = items[index];
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + items.length) % items.length);
+      if (e.key === "ArrowRight") setIndex((i) => (i + 1) % items.length);
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [items, onClose]);
 
   return (
+    <div style={sl.overlay} onClick={onClose}>
+      <div style={sl.inner} onClick={(e) => e.stopPropagation()}>
+        <button style={sl.closeBtn} onClick={onClose}>✕</button>
+        <img src={item.imgs[0]} alt={item.description} style={sl.img} />
+        <div style={sl.meta}>
+          <button style={sl.arrowBtn} onClick={() => setIndex((i) => (i - 1 + items.length) % items.length)}>←</button>
+          <span style={sl.caption}>{item.description}</span>
+          <span style={sl.counter}>{index + 1} / {items.length}</span>
+          <button style={sl.arrowBtn} onClick={() => setIndex((i) => (i + 1) % items.length)}>→</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function GalleryPage({ onBack }) {
+  const [slideshowIndex, setSlideshowIndex] = useState(null);
+  const reversed = [...GALLERY].reverse();
+
+  return (
+    <div style={s.root}>
+      {slideshowIndex !== null && (
+        <Slideshow items={reversed} startIndex={slideshowIndex} onClose={() => setSlideshowIndex(null)} />
+      )}
+      <nav style={s.nav}>
+        <button style={s.navBackBtn} onClick={onBack}>← back</button>
+        <span style={s.logo}>Montclair</span>
+        <button style={s.slideshowBtn} onClick={() => setSlideshowIndex(0)}>slideshow →</button>
+      </nav>
+      <section style={{ ...s.section, maxWidth: 960 }}>
+        <h2 style={s.heading}>gallery</h2>
+        {GALLERY.length === 0 ? (
+          <p style={{ textAlign: "center", color: "#888", fontSize: 13 }}>no photos yet.</p>
+        ) : (
+          <div style={g.grid}>
+            {reversed.map((item, i) => (
+              <div key={item.id} style={{ ...g.item, cursor: "pointer" }} onClick={() => setSlideshowIndex(i)}>
+                <img src={item.imgs[0]} alt={item.description} style={g.img} />
+                <span style={g.caption}>{item.description}</span>
+                <span style={g.date}>{item.date}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}
+
+function MerchDetail({ item, onBack }) {
+  const [activeImg, setActiveImg] = useState(0);
+  return (
     <div style={d.root}>
-      {/* sticky back nav */}
       <nav style={d.nav}>
         <button style={d.backBtn} onClick={onBack}>← back to shop</button>
       </nav>
-
       <div style={d.layout}>
-        {/* left: images */}
         <div style={d.imageCol}>
-          <img
-            src={item.imgs[activeImg]}
-            alt={item.name}
-            style={d.mainImg}
-          />
+          <img src={item.imgs[activeImg]} alt={item.name} style={d.mainImg} />
           {item.imgs.length > 1 && (
             <div style={d.thumbRow}>
               {item.imgs.map((src, i) => (
                 <img
-                  key={i}
-                  src={src}
-                  alt={`${item.name} view ${i + 1}`}
+                  key={i} src={src} alt={`${item.name} view ${i + 1}`}
                   style={{ ...d.thumb, ...(i === activeImg ? d.thumbActive : {}) }}
                   onClick={() => setActiveImg(i)}
                 />
@@ -135,18 +528,11 @@ function MerchDetail({ item, onBack }) {
             </div>
           )}
         </div>
-
-        {/* right: info */}
         <div style={d.infoCol}>
           <h1 style={d.name}>{item.name}</h1>
           <p style={d.price}>{item.price}</p>
           <p style={d.description}>{item.description}</p>
-          <a
-            href={item.stripeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={d.buyBtn}
-          >
+          <a href={item.stripeLink} target="_blank" rel="noopener noreferrer" style={d.buyBtn}>
             buy — {item.price} →
           </a>
         </div>
@@ -155,7 +541,6 @@ function MerchDetail({ item, onBack }) {
   );
 }
 
-// lil play thing
 function Player({ currentTrack, setCurrentTrack }) {
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -194,11 +579,16 @@ function Player({ currentTrack, setCurrentTrack }) {
     };
     audio.addEventListener("timeupdate", update);
     audio.addEventListener("ended", onEnded);
-    return () => { audio.removeEventListener("timeupdate", update); audio.removeEventListener("ended", onEnded); };
+    return () => {
+      audio.removeEventListener("timeupdate", update);
+      audio.removeEventListener("ended", onEnded);
+    };
   }, [setCurrentTrack]);
 
   useEffect(() => {
-    const handleClick = (e) => { if (volRef.current && !volRef.current.contains(e.target)) setShowVol(false); };
+    const handleClick = (e) => {
+      if (volRef.current && !volRef.current.contains(e.target)) setShowVol(false);
+    };
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
@@ -235,7 +625,6 @@ function Player({ currentTrack, setCurrentTrack }) {
           </div>
         ))}
       </div>
-
       <div style={ps.bar}>
         <button style={ps.btn} onClick={prev} title="Previous">
           <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
@@ -294,7 +683,6 @@ function Player({ currentTrack, setCurrentTrack }) {
   );
 }
 
-// concepts of a newsletter --- still needs to get done af
 function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
@@ -321,10 +709,10 @@ function NewsletterSection() {
   );
 }
 
-// all
 export default function Montclair() {
   const [currentTrack, setCurrentTrack] = useState(0);
   const [activeMerch, setActiveMerch] = useState(null);
+  const [showGallery, setShowGallery] = useState(false);
   const track = TRACKS[currentTrack];
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -334,24 +722,22 @@ export default function Montclair() {
       ? "montclair — listen on spotify →"
       : `${track.title.toLowerCase()} — listen on spotify →`;
 
-  
-  if (activeMerch) {
-    return <MerchDetail item={activeMerch} onBack={() => setActiveMerch(null)} />;
-  }
+  const recentGallery = [...GALLERY].slice(-2).reverse();
+
+  if (showGallery) return <GalleryPage onBack={() => setShowGallery(false)} />;
+  if (activeMerch) return <MerchDetail item={activeMerch} onBack={() => setActiveMerch(null)} />;
 
   return (
     <div style={s.root}>
-      {/* NAV */}
       <nav style={s.nav}>
         <span style={s.logo}>Montclair</span>
         <div style={s.navLinks}>
-          {["shop", "shows", "music"].map((item) => (
+          {["shop", "shows", "gallery", "music"].map((item) => (
             <button key={item} style={s.navLink} onClick={() => scrollTo(item)}>{item}</button>
           ))}
         </div>
       </nav>
 
-      {/* SHOP */}
       <section id="shop" style={s.section}>
         <h2 style={s.heading}>shop</h2>
         <div style={s.merchList}>
@@ -362,7 +748,7 @@ export default function Montclair() {
               </div>
               <span style={s.merchName}>{item.name}</span>
               <span style={s.merchPrice}>{item.price}</span>
-              <button style={s.buyBtn} onClick={() => setActiveMerch(item)}> buy →</button>
+              <button style={s.buyBtn} onClick={() => setActiveMerch(item)}>buy →</button>
             </div>
           ))}
         </div>
@@ -370,7 +756,6 @@ export default function Montclair() {
 
       <div style={s.divider} />
 
-      {/* SHOWS */}
       <section id="shows" style={s.section}>
         <h2 style={s.heading}>shows</h2>
         <div style={s.showsList}>
@@ -379,12 +764,7 @@ export default function Montclair() {
               <span style={s.showDate}>{show.date}</span>
               <span style={s.showVenue}>
                 {show.venue && show.mapsLink ? (
-                  <a
-                    href={show.mapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={s.venueLink}
-                  >
+                  <a href={show.mapsLink} target="_blank" rel="noopener noreferrer" style={s.venueLink}>
                     {show.venue} <span style={s.venueIcon}>↗</span>
                   </a>
                 ) : (
@@ -399,7 +779,41 @@ export default function Montclair() {
 
       <div style={s.divider} />
 
-      {/* MUSIC */}
+      <section id="gallery" style={s.section}>
+        <div style={s.galleryHeader}>
+          <h2 style={{ ...s.heading, margin: 0 }}>gallery</h2>
+          {GALLERY.length > 0 && (
+            <button style={s.viewAllBtn} onClick={() => setShowGallery(true)}>
+              view all →
+            </button>
+          )}
+        </div>
+
+        {GALLERY.length === 0 ? (
+          <p style={{ textAlign: "center", color: "#888", fontSize: 13, marginTop: 32 }}>no photos yet.</p>
+        ) : (
+          <div style={s.galleryPreviewGrid}>
+            {recentGallery.map((item) => (
+              <div key={item.id} style={s.galleryItem}>
+                <img src={item.imgs[0]} alt={item.description} style={s.galleryImg} />
+                <span style={s.galleryCaption}>{item.description}</span>
+                <span style={s.galleryDate}>{item.date}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {GALLERY.length > 2 && (
+          <div style={{ textAlign: "center", marginTop: 24 }}>
+            <button style={s.viewAllBtnBottom} onClick={() => setShowGallery(true)}>
+              view all {GALLERY.length} photos →
+            </button>
+          </div>
+        )}
+      </section>
+
+      <div style={s.divider} />
+
       <section id="music" style={s.section}>
         <h2 style={s.heading}>music</h2>
         <Player currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} />
@@ -428,7 +842,36 @@ export default function Montclair() {
   );
 }
 
-// merch deet deets
+const sl = {
+  overlay: {
+    position: "fixed", inset: 0, background: "rgba(0,0,0,0.92)",
+    zIndex: 200, display: "flex", alignItems: "center", justifyContent: "center",
+  },
+  inner: {
+    position: "relative", display: "flex", flexDirection: "column",
+    alignItems: "center", maxWidth: "90vw", maxHeight: "90vh",
+  },
+  img: {
+    maxWidth: "80vw", maxHeight: "75vh", objectFit: "contain", display: "block",
+  },
+  arrowBtn: {
+    background: "none", border: "none", color: "#fff", fontSize: 28,
+    cursor: "pointer", fontFamily: FONT, padding: "8px 12px",
+    opacity: 0.7, lineHeight: 1, flexShrink: 0,
+  },
+  closeBtn: {
+    position: "absolute", top: -36, right: 0,
+    background: "none", border: "none", color: "#fff", fontSize: 18,
+    cursor: "pointer", fontFamily: FONT, padding: 4, opacity: 0.7,
+  },
+  meta: {
+    display: "flex", justifyContent: "space-between", alignItems: "center",
+    width: "80vw", maxWidth: 640, marginTop: 12, gap: 16,
+  },
+  caption: { color: "#ccc", fontSize: 12, fontFamily: FONT },
+  counter: { color: "#666", fontSize: 12, fontFamily: FONT, flexShrink: 0 },
+};
+
 const d = {
   root: { background: "#fff", color: "#000", fontFamily: FONT, minHeight: "100vh" },
   nav: {
@@ -437,8 +880,7 @@ const d = {
   },
   backBtn: {
     background: "none", border: "none", fontFamily: FONT,
-    fontSize: 13, color: "#000", cursor: "pointer", padding: 0,
-    letterSpacing: "0.02em",
+    fontSize: 13, color: "#000", cursor: "pointer", padding: 0, letterSpacing: "0.02em",
   },
   layout: {
     display: "flex", flexWrap: "wrap", gap: "48px",
@@ -446,22 +888,14 @@ const d = {
     maxWidth: 960, margin: "0 auto", boxSizing: "border-box",
   },
   imageCol: { flex: "1 1 340px", minWidth: 0 },
-  mainImg: {
-    width: "100%",
-    objectFit: "contain", display: "block", marginBottom: 12,
-  },
+  mainImg: { width: "100%", objectFit: "contain", display: "block", marginBottom: 12 },
   thumbRow: { display: "flex", gap: 8, flexWrap: "wrap" },
   thumb: {
     width: 72, height: 72, objectFit: "cover",
-    cursor: "pointer", opacity: 0.5, border: "1px solid transparent",
-    transition: "opacity 0.15s",
+    cursor: "pointer", opacity: 0.5, border: "1px solid transparent", transition: "opacity 0.15s",
   },
   thumbActive: { opacity: 1, border: "1px solid #000" },
-  infoCol: {
-    flex: "1 1 260px", minWidth: 0,
-    display: "flex", flexDirection: "column", gap: 16,
-    paddingTop: 4,
-  },
+  infoCol: { flex: "1 1 260px", minWidth: 0, display: "flex", flexDirection: "column", gap: 16, paddingTop: 4 },
   name: { fontSize: 15, fontWeight: "bold", margin: 0, fontFamily: FONT },
   price: { fontSize: 13, color: "#555", margin: 0 },
   description: { fontSize: 13, color: "#444", lineHeight: 1.7, margin: 0 },
@@ -473,7 +907,6 @@ const d = {
   },
 };
 
-// play thing styler
 const ps = {
   wrap: { maxWidth: 560, fontFamily: FONT, width: "100%" },
   trackList: { marginBottom: 8 },
@@ -520,7 +953,18 @@ const ps = {
   nowPlaying: { fontSize: 12, color: "#888", marginTop: 8, fontFamily: FONT },
 };
 
-// overall style
+const g = {
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+    gap: 24,
+  },
+  item: { display: "flex", flexDirection: "column", gap: 8 },
+  img: { width: "100%", aspectRatio: "1", objectFit: "cover" },
+  caption: { fontSize: 12, color: "#444" },
+  date: { fontSize: 11, color: "#aaa" },
+};
+
 const s = {
   root: { background: "#fff", color: "#000", fontFamily: FONT, minHeight: "100vh", width: "100%", fontSize: 14, boxSizing: "border-box" },
   nav: {
@@ -528,6 +972,15 @@ const s = {
     padding: "20px 24px", borderBottom: "1px solid #eee",
     position: "sticky", top: 0, background: "#fff", zIndex: 100,
     flexWrap: "wrap", gap: 12,
+  },
+  navBackBtn: {
+    background: "none", border: "none", fontFamily: FONT,
+    fontSize: 13, color: "#000", cursor: "pointer", padding: 0, letterSpacing: "0.02em",
+  },
+  slideshowBtn: {
+    background: "none", border: "none", fontFamily: FONT, fontSize: 13,
+    color: "#000", cursor: "pointer", padding: 0,
+    borderBottom: "1px solid #000", paddingBottom: 1, letterSpacing: "0.02em",
   },
   logo: { fontSize: 15, fontWeight: "bold", fontFamily: FONT, letterSpacing: "0.01em" },
   navLinks: { display: "flex", gap: 24, flexWrap: "wrap" },
@@ -538,6 +991,29 @@ const s = {
   section: { padding: "clamp(40px, 8vw, 72px) clamp(20px, 6vw, 48px)", maxWidth: 720, margin: "0 auto", boxSizing: "border-box", width: "100%" },
   heading: { fontSize: 13, fontWeight: "bold", letterSpacing: "0.08em", margin: "0 0 32px", fontFamily: FONT, textAlign: "center" },
   divider: { borderTop: "1px solid #eee", margin: "0 clamp(20px, 6vw, 48px)" },
+  galleryHeader: {
+    display: "flex", alignItems: "center", justifyContent: "space-between",
+    marginBottom: 32,
+  },
+  viewAllBtn: {
+    background: "none", border: "none", fontFamily: FONT, fontSize: 13,
+    color: "#000", cursor: "pointer", padding: 0,
+    borderBottom: "1px solid #000", paddingBottom: 1, letterSpacing: "0.02em",
+  },
+  viewAllBtnBottom: {
+    background: "none", border: "none", fontFamily: FONT, fontSize: 13,
+    color: "#000", cursor: "pointer", padding: 0,
+    borderBottom: "1px solid #000", paddingBottom: 1, letterSpacing: "0.02em",
+  },
+  galleryPreviewGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: 24,
+  },
+  galleryItem: { display: "flex", flexDirection: "column", gap: 8 },
+  galleryImg: { width: "100%", aspectRatio: "1", objectFit: "cover" },
+  galleryCaption: { fontSize: 12, color: "#444" },
+  galleryDate: { fontSize: 11, color: "#aaa" },
   merchImg: { width: "clamp(200px, 60vw, 400px)", height: "clamp(200px, 60vw, 400px)", objectFit: "cover" },
   merchList: { display: "flex", flexDirection: "column", gap: 0 },
   merchRow: {
