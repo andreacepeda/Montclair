@@ -1,14 +1,13 @@
 import { kv } from "@vercel/kv";
 
 const KEY = "snake:leaderboard";
-const MAX_SCORE = 220; // sanity cap — the grid is 15x15, so a legit score tops out well under this
+const MAX_SCORE = 220; 
 const MAX_NAME_LEN = 3;
-const KEEP = 50; // trim the sorted set so it can't grow forever
+const KEEP = 50; 
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      // top 3 by score, descending
       const raw = await kv.zrange(KEY, 0, 2, { rev: true, withScores: true });
       const scores = [];
       for (let i = 0; i < raw.length; i += 2) {
@@ -34,11 +33,9 @@ export default async function handler(req, res) {
       }
 
       const name = (rawName || "ANO").slice(0, MAX_NAME_LEN).toUpperCase();
-      // unique member id so the same name can appear multiple times with different scores
       const member = `${name}::${Date.now()}::${Math.random().toString(36).slice(2, 8)}`;
 
       await kv.zadd(KEY, { score, member });
-      // keep only the highest KEEP entries so the set doesn't grow unbounded
       await kv.zremrangebyrank(KEY, 0, -(KEEP + 1));
 
       return res.status(200).json({ ok: true });

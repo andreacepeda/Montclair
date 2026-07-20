@@ -556,7 +556,6 @@ function SnakeGame() {
       const data = await res.json();
       setLeaderboard(Array.isArray(data.scores) ? data.scores : []);
     } catch (e) {
-      // fail silently — leaderboard just stays empty/stale
     }
   };
 
@@ -575,7 +574,6 @@ function SnakeGame() {
       setSubmitted(true);
       fetchLeaderboard();
     } catch (e) {
-      // fail silently
     } finally {
       setSubmitting(false);
     }
@@ -639,8 +637,6 @@ function SnakeGame() {
     return () => document.removeEventListener("keydown", handleKey);
   }, []);
 
-  // swipe controls for touch devices — swipe on the board to steer,
-  // tap it to start/restart when the overlay is showing
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -651,7 +647,6 @@ function SnakeGame() {
     };
 
     const handleTouchMove = (e) => {
-      // prevent the page from scrolling while swiping on the board
       if (touchStartRef.current) e.preventDefault();
     };
 
