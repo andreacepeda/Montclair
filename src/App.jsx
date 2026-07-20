@@ -533,6 +533,8 @@ function SnakeGame() {
   const GRID = 15;
   const CELL = 18;
   const canvasRef = useRef(null);
+  const wrapRef = useRef(null);
+  const touchStartRef = useRef(null);
   const stateRef = useRef({
     snake: [{ x: 7, y: 7 }],
     dir: { x: 1, y: 0 },
@@ -543,6 +545,41 @@ function SnakeGame() {
   const [highScore, setHighScore] = useState(0);
   const [started, setStarted] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [nameInput, setNameInput] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const fetchLeaderboard = async () => {
+    try {
+      const res = await fetch("/api/leaderboard");
+      const data = await res.json();
+      setLeaderboard(Array.isArray(data.scores) ? data.scores : []);
+    } catch (e) {
+      // fail silently — leaderboard just stays empty/stale
+    }
+  };
+
+  useEffect(() => { fetchLeaderboard(); }, []);
+
+  const submitScore = async () => {
+    if (submitting || submitted) return;
+    const name = nameInput.trim().slice(0, 3).toUpperCase() || "ANO";
+    setSubmitting(true);
+    try {
+      await fetch("/api/leaderboard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, score }),
+      });
+      setSubmitted(true);
+      fetchLeaderboard();
+    } catch (e) {
+      // fail silently
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const randomFood = (snake) => {
     let pos;
@@ -571,6 +608,15 @@ function SnakeGame() {
     setScore(0);
     setGameOver(false);
     setStarted(true);
+    setSubmitted(false);
+    setNameInput("");
+  };
+
+  const setDirection = (nd) => {
+    const st = stateRef.current;
+    if (!(nd.x === -st.dir.x && nd.y === -st.dir.y)) {
+      st.nextDir = nd;
+    }
   };
 
   useEffect(() => { draw(); }, []);
@@ -582,10 +628,9 @@ function SnakeGame() {
       w: { x: 0, y: -1 }, s: { x: 0, y: 1 }, a: { x: -1, y: 0 }, d: { x: 1, y: 0 },
     };
     const handleKey = (e) => {
-      const st = stateRef.current;
       const nd = keyMap[e.key];
-      if (nd && !(nd.x === -st.dir.x && nd.y === -st.dir.y)) {
-        st.nextDir = nd;
+      if (nd) {
+        setDirection(nd);
         e.preventDefault();
       }
       if (e.key === " ") { resetGame(); e.preventDefault(); }
@@ -593,6 +638,51 @@ function SnakeGame() {
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
   }, []);
+
+  // swipe controls for touch devices — swipe on the board to steer,
+  // tap it to start/restart when the overlay is showing
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+
+    const handleTouchStart = (e) => {
+      const t = e.touches[0];
+      touchStartRef.current = { x: t.clientX, y: t.clientY };
+    };
+
+    const handleTouchMove = (e) => {
+      // prevent the page from scrolling while swiping on the board
+      if (touchStartRef.current) e.preventDefault();
+    };
+
+    const handleTouchEnd = (e) => {
+      const start = touchStartRef.current;
+      touchStartRef.current = null;
+      if (!start) return;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - start.x;
+      const dy = t.clientY - start.y;
+      const absX = Math.abs(dx);
+      const absY = Math.abs(dy);
+      const SWIPE_THRESHOLD = 20;
+
+      if (Math.max(absX, absY) > SWIPE_THRESHOLD) {
+        if (absX > absY) setDirection({ x: dx > 0 ? 1 : -1, y: 0 });
+        else setDirection({ x: 0, y: dy > 0 ? 1 : -1 });
+      } else if (!started || gameOver) {
+        resetGame();
+      }
+    };
+
+    el.addEventListener("touchstart", handleTouchStart, { passive: true });
+    el.addEventListener("touchmove", handleTouchMove, { passive: false });
+    el.addEventListener("touchend", handleTouchEnd);
+    return () => {
+      el.removeEventListener("touchstart", handleTouchStart);
+      el.removeEventListener("touchmove", handleTouchMove);
+      el.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [started, gameOver]);
 
   useEffect(() => {
     if (!started || gameOver) return;
@@ -628,18 +718,50 @@ function SnakeGame() {
           <span>score: {score}</span>
           <span>best: {highScore}</span>
         </div>
-        <div style={sn.canvasWrap}>
+        <div ref={wrapRef} style={sn.canvasWrap}>
           <canvas ref={canvasRef} width={GRID * CELL} height={GRID * CELL} style={sn.canvas} />
           {(!started || gameOver) && (
             <div style={sn.overlay}>
               <p style={sn.overlayText}>{gameOver ? "game over" : "snake"}</p>
+              {gameOver && <p style={sn.overlayScore}>score: {score}</p>}
+              {gameOver && !submitted && (
+                <div style={sn.submitRow}>
+                  <input
+                    type="text"
+                    value={nameInput}
+                    onChange={(e) => setNameInput(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && submitScore()}
+                    placeholder="your name"
+                    maxLength={3}
+                    style={sn.nameInput}
+                  />
+                  <button style={sn.submitBtn} onClick={submitScore} disabled={submitting}>
+                    {submitting ? "..." : "submit"}
+                  </button>
+                </div>
+              )}
+              {gameOver && submitted && <p style={sn.submittedText}>added to the board</p>}
               <button style={sn.playBtn} onClick={resetGame}>
                 {gameOver ? "play again →" : "play →"}
               </button>
             </div>
           )}
         </div>
-        <p style={sn.hint}>arrow keys / wasd to move, space to restart</p>
+        <p style={sn.hint}>arrow keys / wasd, or swipe the board — space or tap to restart</p>
+        <div style={sn.leaderboard}>
+          <p style={sn.leaderboardTitle}>top scores</p>
+          {leaderboard.length === 0 ? (
+            <p style={sn.leaderboardEmpty}>no scores yet — be the first</p>
+          ) : (
+            leaderboard.slice(0, 3).map((entry, i) => (
+              <div key={i} style={sn.leaderboardRow}>
+                <span style={sn.leaderboardRank}>{i + 1}</span>
+                <span style={sn.leaderboardName}>{entry.name}</span>
+                <span style={sn.leaderboardScore}>{entry.score}</span>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </section>
   );
@@ -801,23 +923,51 @@ const sn = {
     display: "flex", gap: 20, fontSize: 12, color: "#555",
     fontFamily: FONT, letterSpacing: "0.02em",
   },
-  canvasWrap: { position: "relative", lineHeight: 0 },
+  canvasWrap: { position: "relative", lineHeight: 0, touchAction: "none", width: "100%", maxWidth: 270 },
   canvas: {
     imageRendering: "pixelated", border: "1px solid #ccc", borderRadius: 4, display: "block",
+    width: "100%", height: "auto", touchAction: "none",
   },
   overlay: {
     position: "absolute", inset: 0, background: "rgba(0,0,0,0.75)",
-    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12,
-    borderRadius: 4,
+    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8,
+    borderRadius: 4, padding: "0 12px", boxSizing: "border-box", textAlign: "center",
   },
   overlayText: {
     color: "#fff", fontFamily: FONT, fontSize: 13, letterSpacing: "0.08em", margin: 0, textTransform: "uppercase",
+  },
+  overlayScore: {
+    color: "#ccc", fontFamily: FONT, fontSize: 11, margin: 0,
   },
   playBtn: {
     fontFamily: FONT, fontSize: 12, background: "#fff", color: "#000",
     border: "none", borderRadius: 6, padding: "6px 16px", cursor: "pointer",
   },
-  hint: { fontSize: 11, color: "#aaa", fontFamily: FONT },
+  hint: { fontSize: 11, color: "#aaa", fontFamily: FONT, textAlign: "center" },
+  submitRow: { display: "flex", gap: 6, alignItems: "center" },
+  nameInput: {
+    fontFamily: FONT, fontSize: 13, border: "1px solid #666", background: "rgba(255,255,255,0.9)",
+    borderRadius: 4, padding: "4px 6px", outline: "none", width: 44,
+    textAlign: "center", textTransform: "uppercase", letterSpacing: "0.15em",
+  },
+  submitBtn: {
+    fontFamily: FONT, fontSize: 11, background: "#6abf5e", color: "#111",
+    border: "none", borderRadius: 4, padding: "5px 10px", cursor: "pointer",
+  },
+  submittedText: { color: "#6abf5e", fontFamily: FONT, fontSize: 11, margin: 0 },
+  leaderboard: { width: "100%", maxWidth: 270, marginTop: 4 },
+  leaderboardTitle: {
+    fontSize: 11, color: "#888", fontFamily: FONT, letterSpacing: "0.08em",
+    textTransform: "uppercase", textAlign: "center", margin: "0 0 8px",
+  },
+  leaderboardEmpty: { fontSize: 11, color: "#aaa", fontFamily: FONT, textAlign: "center", margin: 0 },
+  leaderboardRow: {
+    display: "flex", alignItems: "center", gap: 10, padding: "4px 0",
+    borderBottom: "1px solid #eee", fontSize: 12, fontFamily: FONT, color: "#333",
+  },
+  leaderboardRank: { color: "#aaa", width: 14, flexShrink: 0 },
+  leaderboardName: { flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" },
+  leaderboardScore: { color: "#6abf5e", fontWeight: "bold", flexShrink: 0 },
 };
 
 const sl = {
