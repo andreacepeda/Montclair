@@ -531,7 +531,7 @@ function Player({ currentTrack, setCurrentTrack }) {
 
 function SnakeGame() {
   const GRID = 15;
-  const CELL = 18;
+  const CELL = 20;
   const canvasRef = useRef(null);
   const wrapRef = useRef(null);
   const touchStartRef = useRef(null);
@@ -722,8 +722,11 @@ function SnakeGame() {
           <canvas ref={canvasRef} width={GRID * CELL} height={GRID * CELL} style={sn.canvas} />
           {(!started || gameOver) && (
             <div style={sn.overlay}>
-              <p style={sn.overlayText}>{gameOver ? "game over" : "snake"}</p>
-              {gameOver && <p style={sn.overlayScore}>score: {score}</p>}
+              {gameOver ? (
+                <p style={sn.overlayText}>game over — {score}</p>
+              ) : (
+                <p style={sn.overlayText}>snake</p>
+              )}
               {gameOver && !submitted && (
                 <div style={sn.submitRow}>
                   <input
@@ -731,7 +734,7 @@ function SnakeGame() {
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && submitScore()}
-                    placeholder="your name"
+                    placeholder="ace"
                     maxLength={3}
                     style={sn.nameInput}
                   />
@@ -918,23 +921,23 @@ export default function Montclair() {
 }
 
 const sn = {
-  wrap: { display: "flex", flexDirection: "column", alignItems: "center", gap: 12 },
+  wrap: { display: "flex", flexDirection: "column", alignItems: "center", gap: 18 },
   scoreRow: {
     display: "flex", gap: 20, fontSize: 12, color: "#555",
     fontFamily: FONT, letterSpacing: "0.02em",
   },
-  canvasWrap: { position: "relative", lineHeight: 0, touchAction: "none", width: "100%", maxWidth: 270 },
+  canvasWrap: { position: "relative", lineHeight: 0, touchAction: "none", width: "100%", maxWidth: 300 },
   canvas: {
     imageRendering: "pixelated", border: "1px solid #ccc", borderRadius: 4, display: "block",
     width: "100%", height: "auto", touchAction: "none",
   },
   overlay: {
     position: "absolute", inset: 0, background: "rgba(0,0,0,0.75)",
-    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8,
-    borderRadius: 4, padding: "0 12px", boxSizing: "border-box", textAlign: "center",
+    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 14,
+    borderRadius: 4, padding: "16px", boxSizing: "border-box", textAlign: "center",
   },
   overlayText: {
-    color: "#fff", fontFamily: FONT, fontSize: 13, letterSpacing: "0.08em", margin: 0, textTransform: "uppercase",
+    color: "#fff", fontFamily: FONT, fontSize: 13, letterSpacing: "0.06em", margin: 0, textTransform: "uppercase",
   },
   overlayScore: {
     color: "#ccc", fontFamily: FONT, fontSize: 11, margin: 0,
@@ -944,25 +947,25 @@ const sn = {
     border: "none", borderRadius: 6, padding: "6px 16px", cursor: "pointer",
   },
   hint: { fontSize: 11, color: "#aaa", fontFamily: FONT, textAlign: "center" },
-  submitRow: { display: "flex", gap: 6, alignItems: "center" },
+  submitRow: { display: "flex", gap: 8, alignItems: "center" },
   nameInput: {
     fontFamily: FONT, fontSize: 13, border: "1px solid #666", background: "rgba(255,255,255,0.9)",
-    borderRadius: 4, padding: "4px 6px", outline: "none", width: 44,
+    borderRadius: 4, padding: "5px 6px", outline: "none", width: 44,
     textAlign: "center", textTransform: "uppercase", letterSpacing: "0.15em",
   },
   submitBtn: {
     fontFamily: FONT, fontSize: 11, background: "#6abf5e", color: "#111",
-    border: "none", borderRadius: 4, padding: "5px 10px", cursor: "pointer",
+    border: "none", borderRadius: 4, padding: "6px 12px", cursor: "pointer",
   },
   submittedText: { color: "#6abf5e", fontFamily: FONT, fontSize: 11, margin: 0 },
-  leaderboard: { width: "100%", maxWidth: 270, marginTop: 4 },
+  leaderboard: { width: "100%", maxWidth: 300, marginTop: 6 },
   leaderboardTitle: {
     fontSize: 11, color: "#888", fontFamily: FONT, letterSpacing: "0.08em",
-    textTransform: "uppercase", textAlign: "center", margin: "0 0 8px",
+    textTransform: "uppercase", textAlign: "center", margin: "0 0 12px",
   },
   leaderboardEmpty: { fontSize: 11, color: "#aaa", fontFamily: FONT, textAlign: "center", margin: 0 },
   leaderboardRow: {
-    display: "flex", alignItems: "center", gap: 10, padding: "4px 0",
+    display: "flex", alignItems: "center", gap: 12, padding: "7px 0",
     borderBottom: "1px solid #eee", fontSize: 12, fontFamily: FONT, color: "#333",
   },
   leaderboardRank: { color: "#aaa", width: 14, flexShrink: 0 },
