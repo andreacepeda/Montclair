@@ -637,6 +637,7 @@ function SnakeGame() {
     return () => document.removeEventListener("keydown", handleKey);
   }, []);
 
+
   useEffect(() => {
     const el = wrapRef.current;
     if (!el) return;
@@ -745,7 +746,7 @@ function SnakeGame() {
             </div>
           )}
         </div>
-        <p style={sn.hint}>arrow keys / wasd, or swipe the board — space or tap to restart</p>
+        <p style={sn.hint}>arrow keys / wasd — space / tap to restart</p>
         <div style={sn.leaderboard}>
           <p style={sn.leaderboardTitle}>top scores</p>
           {leaderboard.length === 0 ? (
@@ -768,24 +769,47 @@ function SnakeGame() {
 function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
-  const submit = () => {
-    if (!email.trim()) return;
-    window.location.href = `mailto:${MERCH_EMAIL}?subject=Newsletter signup&body=${encodeURIComponent(email)}`;
-    setSent(true);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  const submit = async () => {
+    const trimmed = email.trim();
+    if (!trimmed || submitting) return;
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+      if (!res.ok) throw new Error("bad response");
+      setSent(true);
+    } catch (e) {
+      setError("something went wrong — try again?");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
   return (
     <section style={s.section}>
       <h2 style={s.heading}>stay in the loop</h2>
       {sent ? (
         <p style={s.newsletterThanks}>thanks.</p>
       ) : (
-        <div style={s.newsletterRow}>
-          <input type="email" placeholder="your@email.com" value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && submit()}
-            style={s.newsletterInput} />
-          <button onClick={submit} style={s.newsletterBtn}>subscribe</button>
-        </div>
+        <>
+          <div style={s.newsletterRow}>
+            <input type="email" placeholder="your@email.com" value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && submit()}
+              style={s.newsletterInput} />
+            <button onClick={submit} style={s.newsletterBtn} disabled={submitting}>
+              {submitting ? "..." : "subscribe"}
+            </button>
+          </div>
+          {error && <p style={s.newsletterError}>{error}</p>}
+        </>
       )}
     </section>
   );
@@ -1181,6 +1205,7 @@ const s = {
     border: "none", borderRadius: 6, padding: "8px 18px", cursor: "pointer", flexShrink: 0,
   },
   newsletterThanks: { textAlign: "center", color: "#555", fontSize: 13 },
+  newsletterError: { textAlign: "center", color: "#e05c5c", fontSize: 12, marginTop: 8, fontFamily: FONT },
   footer: { padding: "clamp(20px, 4vw, 40px) clamp(20px, 6vw, 48px)", borderTop: "1px solid #eee", textAlign: "center" },
   email: { fontFamily: FONT, fontSize: 13, color: "#000", textDecoration: "none" },
 };
