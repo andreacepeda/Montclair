@@ -1,3 +1,8 @@
+//link to the music video?
+//frog cursor
+//stripe links!
+//subscribe button
+
 import { useState, useEffect, useRef } from "react";
 
 const FONT = "'Menlo', monospace";
@@ -5,22 +10,6 @@ const FONT = "'Menlo', monospace";
 const TRACKS = [
   {
     id: 1,
-    title: "Mothballs",
-    duration: 187,
-    src: "/Mothballs.mp3",
-    spotify: "https://open.spotify.com/track/0BQOn2mxGjVWj69gR6OeVE?si=37a9202254f0438d",
-    youtube: "https://youtu.be/Iwlw9ilZe7o?si=C4aQLWLmfUc0Y5wE",
-  },
-  {
-    id: 2,
-    title: "Gazing at the Sun",
-    duration: 192,
-    src: "/GazingattheSun.mp3",
-    spotify: "https://open.spotify.com/track/1Wgo0UnF5A90aZwbI3PqR2?si=a97fe667342d47b4",
-    youtube: "https://youtu.be/4Gvmfvrk-i0?si=9w02B90doLD2yxBE",
-  },
-  {
-    id: 3,
     title: "Montclair Mix",
     duration: 1186,
     src: "/MontclairMix.mp3",
@@ -31,16 +20,51 @@ const TRACKS = [
 
 const SHOWS = [
   {
+    date: "July 31, 2026",
+    venue: "surprise location",
+    city: "Orlando, FL",
+    mapsLink: null,
+  },{
     date: "August 6, 2026",
     venue: "Imperial Wine Bar",
     city: "Orlando, FL",
     mapsLink: "https://www.google.com/maps/search/?api=1&query=Imperial+Wine+Bar+Orlando+FL",
   },
   {
+    date: "August 21, 2026",
+    venue: "Sarbez!",
+    city: "St. Augustine, FL",
+    mapsLink: "https://maps.app.goo.gl/KL3inLCJmnCSzQWM6",
+  },
+  {
+    date: "August 27, 2026",
+    venue: "Hillcrest Coffee",
+    city: "Lakeland, FL",
+    mapsLink: "https://maps.app.goo.gl/YhfDXv81WvHBUoWS6",
+  },
+  {
+    date: "August 28, 2026",
+    venue: "Marketplace at Avalon",
+    city: "Orlando, FL",
+    mapsLink: "https://maps.app.goo.gl/pSfw2R9Hyu19kBvx6",
+  },
+  {
     date: "August 31, 2026",
     venue: "surprise location",
     city: "Orlando, FL",
     mapsLink: "https://luma.com/skh8jmci?utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&utm_medium=social&utm_source=ig",
+  },
+  {
+    date: "September 4/5, 2026",
+    venue: "Clancy Cantina",
+    city: "New Smyrna, FL",
+    mapsLink: "https://maps.app.goo.gl/xmYQKPi5uqbvW6449",
+  },
+  {
+    date: "October 18, 2026",
+    venue: "Lil Indies",
+    city: "Orlando, FL",
+    mapsLink: "https://maps.app.goo.gl/Pnnqoz9sjt1dTECP7",
   },
   {
     date: "December 2, 2026",
@@ -81,357 +105,213 @@ const GALLERY = [
   {
     id: 1,
     imgs: ["/SillyBand.JPG"],
-    description: "Five veterans post war",
+    description: "five veterans post war",
     date: "05-08-2026",
   },
   {
     id: 2,
     imgs: ["/Balloons.JPG"],
-    description: "********",
+    description: "11:33 pm",
     date: "05-01-2026",
   },
   {
     id: 3,
-    imgs: ["/Candid.JPG"],
-    description: "#show",
+    imgs: ["/anotherCandid.JPG"],
+    description: "*****",
     date: "05-08-2026",
   },
   {
     id: 4,
-    imgs: ["/guitar.JPG"],
-    description: "and we all said thank you *****",
-    date: "05-08-2026",
-  },
-  {
-    id: 5,
-    imgs: ["/anotherCandid.JPG"],
-    description: "**insert classic one liner",
-    date: "05-08-2026",
-  },
-  {
-    id: 6,
-    imgs: ["/bandBattles.JPG"],
-    description: "post set band pic",
-    date: "05-08-2026",
-  },
-  {
-    id: 7,
     imgs: ["/areaClosed.JPG"],
     description: "******",
     date: "04-19-2026",
   },
   {
-    id: 8,
-    imgs: ["/redNwhite.JPG"],
-    description: "******",
-    date: "02-22-26",
-  },
-  {
-    id: 9,
+    id: 5,
     imgs: ["/redNwhite2.JPG"],
-    description: "******",
+    description: "montclair",
     date: "02-22-2026",
   },
   {
-    id: 10,
-    imgs: ["/bob.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 11,
+    id: 6,
     imgs: ["/bobfull.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 12,
-    imgs: ["/bobset.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 13,
-    imgs: ["/bobfull3.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 14,
-    imgs: ["/bobdrums.JPG"],
-    description: "***",
-    date: "02-28-2026",
-  },
-  {
-    id: 15,
-    imgs: ["/bobfull2.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 16,
-    imgs: ["/bobfull4.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 17,
-    imgs: ["/bobdrums2.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 18,
-    imgs: ["/bobdrums3.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 19,
-    imgs: ["/bobadjust.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 20,
-    imgs: ["/bobadjust2.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 21,
+    id: 7,
     imgs: ["/bobadjust3.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 22,
+    id: 8,
     imgs: ["/bobadjust4.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 23,
+    id: 9,
     imgs: ["/bobsolo.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 24,
-    imgs: ["/bobsolo2.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 25,
-    imgs: ["/bobsolo3.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 26,
+    id: 10,
     imgs: ["/bobsolo4.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 27,
+    id: 11,
     imgs: ["/bobsolo5.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 28,
-    imgs: ["/bobsolo6.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 29,
-    imgs: ["/m4lshirt.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 30,
-    imgs: ["/m4lshirt2.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 31,
-    imgs: ["/m4lshirt3.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 32,
-    imgs: ["/bobsolo7.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 33,
-    imgs: ["/bobsolo8.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 34,
+    id: 12,
     imgs: ["/bobsolo9.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 35,
-    imgs: ["/bobset2.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 36,
-    imgs: ["/bobset3.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 37,
+    id: 13,
     imgs: ["/bobadjust5.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 38,
-    imgs: ["/bobsolo10.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 39,
-    imgs: ["/bobset4.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 40,
-    imgs: ["/bobsolo12.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 41,
+    id: 14,
     imgs: ["/bobset5.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 42,
-    imgs: ["/m4ldigi.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 43,
+    id: 15,
     imgs: ["/m4ldigi2.JPG"],
-    description: "******",
+    description: "montclair's #1 fan",
     date: "02-28-2026",
   },
   {
-    id: 44,
+    id: 16,
     imgs: ["/boblawn.JPG"],
-    description: "******",
+    description: "mill's lawn",
     date: "02-28-2026",
   },
   {
-    id: 45,
+    id: 17,
     imgs: ["/bobset6.JPG"],
     description: "******",
     date: "02-28-2026",
   },
   {
-    id: 46,
+    id: 18,
     imgs: ["/laundromog.JPG"],
-    description: "******",
+    description: "laundromog",
     date: "02-12-2026",
   },
   {
-    id: 47,
-    imgs: ["/laundromog2.JPG"],
-    description: "******",
-    date: "02-12-2026",
-  },
-  {
-    id: 48,
+    id: 19,
     imgs: ["/sleepy.JPG"],
-    description: "******",
+    description: "*****",
     date: "05-09-2026",
   },
   {
-    id: 49,
+    id: 20,
     imgs: ["/sleepy2.JPG"],
-    description: "******",
+    description: "naptime",
     date: "05-09-2026",
   },
   {
-    id: 50,
-    imgs: ["/balloons2.JPG"],
-    description: "******",
-    date: "05-01-2026",
-  },
-  {
-    id: 51,
+    id: 21,
     imgs: ["/notes.JPG"],
     description: "******",
     date: "05-04-2026",
   },
   {
-    id: 52,
+    id: 22,
     imgs: ["/balloons3.JPG"],
     description: "******",
     date: "05-08-2026",
   },
   {
-    id: 53,
+    id: 23,
     imgs: ["/piano.JPG"],
     description: "******",
     date: "06-10-2026",
   },
   {
-    id: 54,
+    id: 24,
     imgs: ["/piano2.JPG"],
     description: "******",
     date: "06-11-2026",
   },
   {
-    id: 55,
+    id: 25,
     imgs: ["/swan.JPG"],
     description: "******",
     date: "04-19-2026",
   },
   {
-    id: 56,
+    id: 26,
     imgs: ["/tree.JPG"],
     description: "******",
     date: "04-19-2026",
   },
   {
-    id: 57,
+    id: 27,
     imgs: ["/tree2.JPG"],
     description: "******",
     date: "04-19-2026",
   },
   {
-    id: 58,
-    imgs: ["/notes2.JPG"],
-    description: "******",
-    date: "04-25-2026",
-  },
-  {
-    id: 59,
+    id: 28,
     imgs: ["/gatsoriginal.JPG"],
-    description: "******",
+    description: "gazing at the sun",
     date: "06-05-2026",
   },
+  {
+    id: 29,
+    imgs: ["/notes2.JPG"],
+    description: "MoneyWoize",
+    date: "04-25-2026"
+  },
+  {
+    id: 30,
+    imgs: ["/madbeach.JPG"],
+    description: "5:34 pm on madeira beach",
+    date: "09-13-2025"
+  },
+  {
+    id: 31,
+    imgs: ["/BOTBSetlist.JPG"],
+    description: "setlist",
+    date: "02-28-2026"
+  },
+  {
+    id: 32,
+    imgs: ["/cowvocals.JPG"],
+    description: "moo",
+    date: "12-12-2025"
+  },
+  {
+    id: 33,
+    imgs: ["/yellowpiano.JPG"],
+    description: "*****",
+    date: "09-29-2025"
+  },
+  {
+    id: 34,
+    imgs: ["/montclairfirst.JPG"],
+    description: "first show",
+    date: "01-15-2026"
+  },
+  {
+    id: 29,
+    imgs: ["/montclairfirst2.JPG"],
+    description: "stardust",
+    date: "01-15-2026"
+  }
 ];
 
 const MERCH_EMAIL = "bandmontclair@gmail.com";
@@ -468,40 +348,6 @@ function Slideshow({ items, startIndex, onClose }) {
           <button style={sl.arrowBtn} onClick={() => setIndex((i) => (i + 1) % items.length)}>→</button>
         </div>
       </div>
-    </div>
-  );
-}
-
-function GalleryPage({ onBack }) {
-  const [slideshowIndex, setSlideshowIndex] = useState(null);
-  const reversed = [...GALLERY].reverse();
-
-  return (
-    <div style={s.root}>
-      {slideshowIndex !== null && (
-        <Slideshow items={reversed} startIndex={slideshowIndex} onClose={() => setSlideshowIndex(null)} />
-      )}
-      <nav style={s.nav}>
-        <button style={s.navBackBtn} onClick={onBack}>← back</button>
-        <span style={s.logo}>Montclair</span>
-        <button style={s.slideshowBtn} onClick={() => setSlideshowIndex(0)}>slideshow →</button>
-      </nav>
-      <section style={{ ...s.section, maxWidth: 960 }}>
-        <h2 style={s.heading}>gallery</h2>
-        {GALLERY.length === 0 ? (
-          <p style={{ textAlign: "center", color: "#888", fontSize: 13 }}>no photos yet.</p>
-        ) : (
-          <div style={g.grid}>
-            {reversed.map((item, i) => (
-              <div key={item.id} style={{ ...g.item, cursor: "pointer" }} onClick={() => setSlideshowIndex(i)}>
-                <img src={item.imgs[0]} alt={item.description} style={g.img} />
-                <span style={g.caption}>{item.description}</span>
-                <span style={g.date}>{item.date}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
     </div>
   );
 }
@@ -683,6 +529,122 @@ function Player({ currentTrack, setCurrentTrack }) {
   );
 }
 
+function SnakeGame() {
+  const GRID = 15;
+  const CELL = 18;
+  const canvasRef = useRef(null);
+  const stateRef = useRef({
+    snake: [{ x: 7, y: 7 }],
+    dir: { x: 1, y: 0 },
+    nextDir: { x: 1, y: 0 },
+    food: { x: 10, y: 7 },
+  });
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  const [started, setStarted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
+
+  const randomFood = (snake) => {
+    let pos;
+    do {
+      pos = { x: Math.floor(Math.random() * GRID), y: Math.floor(Math.random() * GRID) };
+    } while (snake.some((seg) => seg.x === pos.x && seg.y === pos.y));
+    return pos;
+  };
+
+  const draw = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const st = stateRef.current;
+    ctx.fillStyle = "#111";
+    ctx.fillRect(0, 0, GRID * CELL, GRID * CELL);
+    ctx.fillStyle = "#6abf5e";
+    st.snake.forEach((seg) => ctx.fillRect(seg.x * CELL + 1, seg.y * CELL + 1, CELL - 2, CELL - 2));
+    ctx.fillStyle = "#e05c5c";
+    ctx.fillRect(st.food.x * CELL + 2, st.food.y * CELL + 2, CELL - 4, CELL - 4);
+  };
+
+  const resetGame = () => {
+    const snake = [{ x: 7, y: 7 }];
+    stateRef.current = { snake, dir: { x: 1, y: 0 }, nextDir: { x: 1, y: 0 }, food: randomFood(snake) };
+    setScore(0);
+    setGameOver(false);
+    setStarted(true);
+  };
+
+  useEffect(() => { draw(); }, []);
+
+  useEffect(() => {
+    const keyMap = {
+      ArrowUp: { x: 0, y: -1 }, ArrowDown: { x: 0, y: 1 },
+      ArrowLeft: { x: -1, y: 0 }, ArrowRight: { x: 1, y: 0 },
+      w: { x: 0, y: -1 }, s: { x: 0, y: 1 }, a: { x: -1, y: 0 }, d: { x: 1, y: 0 },
+    };
+    const handleKey = (e) => {
+      const st = stateRef.current;
+      const nd = keyMap[e.key];
+      if (nd && !(nd.x === -st.dir.x && nd.y === -st.dir.y)) {
+        st.nextDir = nd;
+        e.preventDefault();
+      }
+      if (e.key === " ") { resetGame(); e.preventDefault(); }
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, []);
+
+  useEffect(() => {
+    if (!started || gameOver) return;
+    const interval = setInterval(() => {
+      const st = stateRef.current;
+      st.dir = st.nextDir;
+      const head = { x: st.snake[0].x + st.dir.x, y: st.snake[0].y + st.dir.y };
+      const hitWall = head.x < 0 || head.x >= GRID || head.y < 0 || head.y >= GRID;
+      const hitSelf = st.snake.some((seg) => seg.x === head.x && seg.y === head.y);
+      if (hitWall || hitSelf) {
+        setGameOver(true);
+        setHighScore((h) => Math.max(h, st.snake.length - 1));
+        return;
+      }
+      const newSnake = [head, ...st.snake];
+      if (head.x === st.food.x && head.y === st.food.y) {
+        st.food = randomFood(newSnake);
+        setScore((sc) => sc + 1);
+      } else {
+        newSnake.pop();
+      }
+      st.snake = newSnake;
+      draw();
+    }, 120);
+    return () => clearInterval(interval);
+  }, [started, gameOver]);
+
+  return (
+    <section id="play" style={s.section}>
+      <h2 style={s.heading}>play</h2>
+      <div style={sn.wrap}>
+        <div style={sn.scoreRow}>
+          <span>score: {score}</span>
+          <span>best: {highScore}</span>
+        </div>
+        <div style={sn.canvasWrap}>
+          <canvas ref={canvasRef} width={GRID * CELL} height={GRID * CELL} style={sn.canvas} />
+          {(!started || gameOver) && (
+            <div style={sn.overlay}>
+              <p style={sn.overlayText}>{gameOver ? "game over" : "snake"}</p>
+              <button style={sn.playBtn} onClick={resetGame}>
+                {gameOver ? "play again →" : "play →"}
+              </button>
+            </div>
+          )}
+        </div>
+        <p style={sn.hint}>arrow keys / wasd to move, space to restart</p>
+      </div>
+    </section>
+  );
+}
+
 function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
@@ -712,7 +674,7 @@ function NewsletterSection() {
 export default function Montclair() {
   const [currentTrack, setCurrentTrack] = useState(0);
   const [activeMerch, setActiveMerch] = useState(null);
-  const [showGallery, setShowGallery] = useState(false);
+  const [slideshowIndex, setSlideshowIndex] = useState(null);
   const track = TRACKS[currentTrack];
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -722,39 +684,23 @@ export default function Montclair() {
       ? "montclair — listen on spotify →"
       : `${track.title.toLowerCase()} — listen on spotify →`;
 
-  const recentGallery = [...GALLERY].slice(-2).reverse();
+  const reversedGallery = [...GALLERY].reverse();
 
-  if (showGallery) return <GalleryPage onBack={() => setShowGallery(false)} />;
   if (activeMerch) return <MerchDetail item={activeMerch} onBack={() => setActiveMerch(null)} />;
 
   return (
     <div style={s.root}>
+      {slideshowIndex !== null && (
+        <Slideshow items={reversedGallery} startIndex={slideshowIndex} onClose={() => setSlideshowIndex(null)} />
+      )}
       <nav style={s.nav}>
         <span style={s.logo}>Montclair</span>
         <div style={s.navLinks}>
-          {["shop", "shows", "gallery", "music"].map((item) => (
+          {["shows", "music", "shop", "gallery", "play"].map((item) => (
             <button key={item} style={s.navLink} onClick={() => scrollTo(item)}>{item}</button>
           ))}
         </div>
       </nav>
-
-      <section id="shop" style={s.section}>
-        <h2 style={s.heading}>shop</h2>
-        <div style={s.merchList}>
-          {MERCH.map((item) => (
-            <div key={item.id} style={s.merchRow}>
-              <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
-                <img src={item.imgs[0]} alt={item.name} style={s.merchImg} />
-              </div>
-              <span style={s.merchName}>{item.name}</span>
-              <span style={s.merchPrice}>{item.price}</span>
-              <button style={s.buyBtn} onClick={() => setActiveMerch(item)}>buy →</button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <div style={s.divider} />
 
       <section id="shows" style={s.section}>
         <h2 style={s.heading}>shows</h2>
@@ -779,41 +725,6 @@ export default function Montclair() {
 
       <div style={s.divider} />
 
-      <section id="gallery" style={s.section}>
-        <div style={s.galleryHeader}>
-          <h2 style={{ ...s.heading, margin: 0 }}>gallery</h2>
-          {GALLERY.length > 0 && (
-            <button style={s.viewAllBtn} onClick={() => setShowGallery(true)}>
-              view all →
-            </button>
-          )}
-        </div>
-
-        {GALLERY.length === 0 ? (
-          <p style={{ textAlign: "center", color: "#888", fontSize: 13, marginTop: 32 }}>no photos yet.</p>
-        ) : (
-          <div style={s.galleryPreviewGrid}>
-            {recentGallery.map((item) => (
-              <div key={item.id} style={s.galleryItem}>
-                <img src={item.imgs[0]} alt={item.description} style={s.galleryImg} />
-                <span style={s.galleryCaption}>{item.description}</span>
-                <span style={s.galleryDate}>{item.date}</span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {GALLERY.length > 2 && (
-          <div style={{ textAlign: "center", marginTop: 24 }}>
-            <button style={s.viewAllBtnBottom} onClick={() => setShowGallery(true)}>
-              view all {GALLERY.length} photos →
-            </button>
-          </div>
-        )}
-      </section>
-
-      <div style={s.divider} />
-
       <section id="music" style={s.section}>
         <h2 style={s.heading}>music</h2>
         <Player currentTrack={currentTrack} setCurrentTrack={setCurrentTrack} />
@@ -833,7 +744,49 @@ export default function Montclair() {
 
       <div style={s.divider} />
 
+      <section id="shop" style={s.section}>
+        <h2 style={s.heading}>shop</h2>
+        <div style={s.merchList}>
+          {MERCH.map((item) => (
+            <div key={item.id} style={s.merchRow}>
+              <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
+                <img src={item.imgs[0]} alt={item.name} style={s.merchImg} />
+              </div>
+              <span style={s.merchName}>{item.name}</span>
+              <span style={s.merchPrice}>{item.price}</span>
+              <button style={s.buyBtn} onClick={() => setActiveMerch(item)}>buy →</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div style={s.divider} />
+
+      <section id="gallery" style={{ ...s.section, maxWidth: 960 }}>
+        <h2 style={s.heading}>gallery</h2>
+
+        {GALLERY.length === 0 ? (
+          <p style={{ textAlign: "center", color: "#888", fontSize: 13 }}>no photos yet.</p>
+        ) : (
+          <div style={g.grid}>
+            {reversedGallery.map((item, i) => (
+              <div key={item.id} style={{ ...g.item, cursor: "pointer" }} onClick={() => setSlideshowIndex(i)}>
+                <img src={item.imgs[0]} alt={item.description} style={g.img} />
+                <span style={g.caption}>{item.description}</span>
+                <span style={g.date}>{item.date}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <div style={s.divider} />
+
       <NewsletterSection />
+
+      <div style={s.divider} />
+
+      <SnakeGame />
 
       <footer style={s.footer}>
         <a href={`mailto:${MERCH_EMAIL}`} style={s.email}>{MERCH_EMAIL}</a>
@@ -841,6 +794,31 @@ export default function Montclair() {
     </div>
   );
 }
+
+const sn = {
+  wrap: { display: "flex", flexDirection: "column", alignItems: "center", gap: 12 },
+  scoreRow: {
+    display: "flex", gap: 20, fontSize: 12, color: "#555",
+    fontFamily: FONT, letterSpacing: "0.02em",
+  },
+  canvasWrap: { position: "relative", lineHeight: 0 },
+  canvas: {
+    imageRendering: "pixelated", border: "1px solid #ccc", borderRadius: 4, display: "block",
+  },
+  overlay: {
+    position: "absolute", inset: 0, background: "rgba(0,0,0,0.75)",
+    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12,
+    borderRadius: 4,
+  },
+  overlayText: {
+    color: "#fff", fontFamily: FONT, fontSize: 13, letterSpacing: "0.08em", margin: 0, textTransform: "uppercase",
+  },
+  playBtn: {
+    fontFamily: FONT, fontSize: 12, background: "#fff", color: "#000",
+    border: "none", borderRadius: 6, padding: "6px 16px", cursor: "pointer",
+  },
+  hint: { fontSize: 11, color: "#aaa", fontFamily: FONT },
+};
 
 const sl = {
   overlay: {
