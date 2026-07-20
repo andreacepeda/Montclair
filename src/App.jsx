@@ -102,216 +102,41 @@ const MERCH = [
 ];
 
 const GALLERY = [
-  {
-    id: 1,
-    imgs: ["/SillyBand.JPG"],
-    description: "five veterans post war",
-    date: "05-08-2026",
-  },
-  {
-    id: 2,
-    imgs: ["/Balloons.JPG"],
-    description: "11:33 pm",
-    date: "05-01-2026",
-  },
-  {
-    id: 3,
-    imgs: ["/anotherCandid.JPG"],
-    description: "*****",
-    date: "05-08-2026",
-  },
-  {
-    id: 4,
-    imgs: ["/areaClosed.JPG"],
-    description: "******",
-    date: "04-19-2026",
-  },
-  {
-    id: 5,
-    imgs: ["/redNwhite2.JPG"],
-    description: "montclair",
-    date: "02-22-2026",
-  },
-  {
-    id: 6,
-    imgs: ["/bobfull.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 7,
-    imgs: ["/bobadjust3.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 8,
-    imgs: ["/bobadjust4.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 9,
-    imgs: ["/bobsolo.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 10,
-    imgs: ["/bobsolo4.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 11,
-    imgs: ["/bobsolo5.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 12,
-    imgs: ["/bobsolo9.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 13,
-    imgs: ["/bobadjust5.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 14,
-    imgs: ["/bobset5.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 15,
-    imgs: ["/m4ldigi2.JPG"],
-    description: "montclair's #1 fan",
-    date: "02-28-2026",
-  },
-  {
-    id: 16,
-    imgs: ["/boblawn.JPG"],
-    description: "mill's lawn",
-    date: "02-28-2026",
-  },
-  {
-    id: 17,
-    imgs: ["/bobset6.JPG"],
-    description: "******",
-    date: "02-28-2026",
-  },
-  {
-    id: 18,
-    imgs: ["/laundromog.JPG"],
-    description: "laundromog",
-    date: "02-12-2026",
-  },
-  {
-    id: 19,
-    imgs: ["/sleepy.JPG"],
-    description: "*****",
-    date: "05-09-2026",
-  },
-  {
-    id: 20,
-    imgs: ["/sleepy2.JPG"],
-    description: "naptime",
-    date: "05-09-2026",
-  },
-  {
-    id: 21,
-    imgs: ["/notes.JPG"],
-    description: "******",
-    date: "05-04-2026",
-  },
-  {
-    id: 22,
-    imgs: ["/balloons3.JPG"],
-    description: "******",
-    date: "05-08-2026",
-  },
-  {
-    id: 23,
-    imgs: ["/piano.JPG"],
-    description: "******",
-    date: "06-10-2026",
-  },
-  {
-    id: 24,
-    imgs: ["/piano2.JPG"],
-    description: "******",
-    date: "06-11-2026",
-  },
-  {
-    id: 25,
-    imgs: ["/swan.JPG"],
-    description: "******",
-    date: "04-19-2026",
-  },
-  {
-    id: 26,
-    imgs: ["/tree.JPG"],
-    description: "******",
-    date: "04-19-2026",
-  },
-  {
-    id: 27,
-    imgs: ["/tree2.JPG"],
-    description: "******",
-    date: "04-19-2026",
-  },
-  {
-    id: 28,
-    imgs: ["/gatsoriginal.JPG"],
-    description: "gazing at the sun",
-    date: "06-05-2026",
-  },
-  {
-    id: 29,
-    imgs: ["/notes2.JPG"],
-    description: "MoneyWoize",
-    date: "04-25-2026"
-  },
-  {
-    id: 30,
-    imgs: ["/madbeach.JPG"],
-    description: "5:34 pm on madeira beach",
-    date: "09-13-2025"
-  },
-  {
-    id: 31,
-    imgs: ["/BOTBSetlist.JPG"],
-    description: "setlist",
-    date: "02-28-2026"
-  },
-  {
-    id: 32,
-    imgs: ["/cowvocals.JPG"],
-    description: "moo",
-    date: "12-12-2025"
-  },
-  {
-    id: 33,
-    imgs: ["/yellowpiano.JPG"],
-    description: "*****",
-    date: "09-29-2025"
-  },
-  {
-    id: 34,
-    imgs: ["/montclairfirst.JPG"],
-    description: "first show",
-    date: "01-15-2026"
-  },
-  {
-    id: 29,
-    imgs: ["/montclairfirst2.JPG"],
-    description: "stardust",
-    date: "01-15-2026"
-  }
+  { id: 1, imgs: ["/SillyBand.JPG"], description: "five veterans post war", date: "05-08-2026" },
+  { id: 2, imgs: ["/Balloons.JPG"], description: "11:33 pm", date: "05-01-2026" },
+  { id: 3, imgs: ["/anotherCandid.JPG"], description: "*****", date: "05-08-2026" },
+  { id: 4, imgs: ["/areaClosed.JPG"], description: "******", date: "04-19-2026" },
+  { id: 5, imgs: ["/redNwhite2.JPG"], description: "montclair", date: "02-22-2026" },
+  { id: 6, imgs: ["/bobfull.JPG"], description: "******", date: "02-28-2026" },
+  { id: 7, imgs: ["/bobadjust3.JPG"], description: "******", date: "02-28-2026" },
+  { id: 8, imgs: ["/bobadjust4.JPG"], description: "******", date: "02-28-2026" },
+  { id: 9, imgs: ["/bobsolo.JPG"], description: "******", date: "02-28-2026" },
+  { id: 10, imgs: ["/bobsolo4.JPG"], description: "******", date: "02-28-2026" },
+  { id: 11, imgs: ["/bobsolo5.JPG"], description: "******", date: "02-28-2026" },
+  { id: 12, imgs: ["/bobsolo9.JPG"], description: "******", date: "02-28-2026" },
+  { id: 13, imgs: ["/bobadjust5.JPG"], description: "******", date: "02-28-2026" },
+  { id: 14, imgs: ["/bobset5.JPG"], description: "******", date: "02-28-2026" },
+  { id: 15, imgs: ["/m4ldigi2.JPG"], description: "montclair's #1 fan", date: "02-28-2026" },
+  { id: 16, imgs: ["/boblawn.JPG"], description: "mill's lawn", date: "02-28-2026" },
+  { id: 17, imgs: ["/bobset6.JPG"], description: "******", date: "02-28-2026" },
+  { id: 18, imgs: ["/laundromog.JPG"], description: "laundromog", date: "02-12-2026" },
+  { id: 19, imgs: ["/sleepy.JPG"], description: "*****", date: "05-09-2026" },
+  { id: 20, imgs: ["/sleepy2.JPG"], description: "naptime", date: "05-09-2026" },
+  { id: 21, imgs: ["/notes.JPG"], description: "******", date: "05-04-2026" },
+  { id: 22, imgs: ["/balloons3.JPG"], description: "******", date: "05-08-2026" },
+  { id: 23, imgs: ["/piano.JPG"], description: "******", date: "06-10-2026" },
+  { id: 24, imgs: ["/piano2.JPG"], description: "******", date: "06-11-2026" },
+  { id: 25, imgs: ["/swan.JPG"], description: "******", date: "04-19-2026" },
+  { id: 26, imgs: ["/tree.JPG"], description: "******", date: "04-19-2026" },
+  { id: 27, imgs: ["/tree2.JPG"], description: "******", date: "04-19-2026" },
+  { id: 28, imgs: ["/gatsoriginal.JPG"], description: "gazing at the sun", date: "06-05-2026" },
+  { id: 29, imgs: ["/notes2.JPG"], description: "MoneyWoize", date: "04-25-2026" },
+  { id: 30, imgs: ["/madbeach.JPG"], description: "5:34 pm on madeira beach", date: "09-13-2025" },
+  { id: 31, imgs: ["/BOTBSetlist.JPG"], description: "setlist", date: "02-28-2026" },
+  { id: 32, imgs: ["/cowvocals.JPG"], description: "moo", date: "12-12-2025" },
+  { id: 33, imgs: ["/yellowpiano.JPG"], description: "*****", date: "09-29-2025" },
+  { id: 34, imgs: ["/montclairfirst.JPG"], description: "first show", date: "01-15-2026" },
+  { id: 29, imgs: ["/montclairfirst2.JPG"], description: "stardust", date: "01-15-2026" }
 ];
 
 const MERCH_EMAIL = "bandmontclair@gmail.com";
@@ -625,7 +450,15 @@ function SnakeGame() {
       ArrowLeft: { x: -1, y: 0 }, ArrowRight: { x: 1, y: 0 },
       w: { x: 0, y: -1 }, s: { x: 0, y: 1 }, a: { x: -1, y: 0 }, d: { x: 1, y: 0 },
     };
+
+    const isTypingTarget = (el) => {
+      if (!el) return false;
+      const tag = el.tagName;
+      return tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el.isContentEditable;
+    };
+
     const handleKey = (e) => {
+      if (isTypingTarget(document.activeElement)) return;
       const nd = keyMap[e.key];
       if (nd) {
         setDirection(nd);
