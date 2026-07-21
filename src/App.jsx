@@ -1,15 +1,11 @@
-//link to the music video?
 //frog cursor
 //stripe links!
-//individual phtos loaded in john (s) ?
-//chronological order for the gallery 
-
+//update montcalir mix
 
 import { useState, useEffect, useRef } from "react";
 
 const FONT = "'Menlo', monospace";
 
-//update montcalir mix
 const TRACKS = [
   {
     id: 1,
@@ -19,6 +15,11 @@ const TRACKS = [
     spotify: "https://open.spotify.com/artist/07GSo1Xpteoar0y8i1sMHu?si=mBL9IlzvSdCnCiXTZ5VMfQ",
     youtube: null,
   },
+];
+
+const YOUTUBE_VIDEOS = [
+  { id: 1, title: "Gazing at the Sun", url: "https://youtu.be/4Gvmfvrk-i0?si=Z0rGmhIUF4wadqFh" },
+  { id: 2, title: "Mothballs", url: "https://youtu.be/Iwlw9ilZe7o?si=HCrwQ8A-Cpp2taOy"},
 ];
 
 const SHOWS = [
@@ -84,8 +85,8 @@ const MERCH = [
     id: "cd",
     name: "Montclair EP — CD",
     price: "$10",
-    stripeLink: "",
-    imgs: ["/CDFront.JPG", "/CDBack.JPG"],
+    stripeLink: "price_1TvfIv3Gm5v9jtYGQgCLFJnq",
+    imgs: ["/CDFront.JPG","CDinside.JPG", "/CDBack.JPG"],
     description: "4 cool tracks for you to enjoy, if you have a cd player.",
   },
   {
@@ -93,7 +94,7 @@ const MERCH = [
     name: "Montclair EP — Cassette",
     price: "$10",
     stripeLink: "",
-    imgs: ["/CassetteFront.JPG", "/CassetteBack.JPG"],
+    imgs: ["/CassetteBack.JPG", "/CassetteFront.JPG"],
     description: "4 cool tracks for you to enjoy, if you have a cassette player.",
   },
 ];
@@ -142,6 +143,16 @@ function fmt(s) {
   const m = Math.floor(s / 60);
   const sec = String(s % 60).padStart(2, "0");
   return `${m}:${sec}`;
+}
+
+function getYoutubeId(url) {
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+  return match ? match[1] : null;
+}
+
+function parseGalleryDate(d) {
+  const [month, day, year] = d.split("-").map(Number);
+  return new Date(year, month - 1, day).getTime();
 }
 
 function Slideshow({ items, startIndex, onClose }) {
@@ -658,14 +669,14 @@ export default function Montclair() {
       ? "montclair — listen on spotify →"
       : `${track.title.toLowerCase()} — listen on spotify →`;
 
-  const reversedGallery = [...GALLERY].reverse();
+  const sortedGallery = [...GALLERY].sort((a, b) => parseGalleryDate(a.date) - parseGalleryDate(b.date));
 
   if (activeMerch) return <MerchDetail item={activeMerch} onBack={() => setActiveMerch(null)} />;
 
   return (
     <div style={s.root}>
       {slideshowIndex !== null && (
-        <Slideshow items={reversedGallery} startIndex={slideshowIndex} onClose={() => setSlideshowIndex(null)} />
+        <Slideshow items={sortedGallery} startIndex={slideshowIndex} onClose={() => setSlideshowIndex(null)} />
       )}
       <nav style={s.nav}>
         <span style={s.logo}>Montclair</span>
@@ -707,11 +718,26 @@ export default function Montclair() {
             <a href={track.spotify} target="_blank" rel="noopener noreferrer" style={s.link}>{spotifyLabel}</a>
           </div>
         )}
-        {track.youtube && (
-          <div style={s.linkWrap}>
-            <a href={track.youtube} target="_blank" rel="noopener noreferrer" style={s.link}>
-              {track.title.toLowerCase()} — watch on youtube →
-            </a>
+        {YOUTUBE_VIDEOS.length > 0 && (
+          <div style={s.ytRow}>
+            {YOUTUBE_VIDEOS.map((video) => (
+              <a key={video.id} href={video.url} target="_blank" rel="noopener noreferrer" style={s.ytCard}>
+                <div style={s.ytThumbWrap}>
+                  <img
+                    src={`https://img.youtube.com/vi/${getYoutubeId(video.url)}/hqdefault.jpg`}
+                    alt={video.title}
+                    style={s.ytThumb}
+                  />
+                  <div style={s.ytPlayBtn}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="10" fill="rgba(0,0,0,0.65)" />
+                      <polygon points="8,6 15,10 8,14" fill="#fff" />
+                    </svg>
+                  </div>
+                </div>
+                <span style={s.ytLabel}>{video.title.toLowerCase()} — watch on youtube →</span>
+              </a>
+            ))}
           </div>
         )}
       </section>
@@ -743,7 +769,7 @@ export default function Montclair() {
           <p style={{ textAlign: "center", color: "#888", fontSize: 13 }}>no photos yet.</p>
         ) : (
           <div style={g.grid}>
-            {reversedGallery.map((item, i) => (
+            {sortedGallery.map((item, i) => (
               <div key={item.id} style={{ ...g.item, cursor: "pointer" }} onClick={() => setSlideshowIndex(i)}>
                 <img src={item.imgs[0]} alt={item.description} style={g.img} />
                 <span style={g.caption}>{item.description}</span>
@@ -888,7 +914,7 @@ const d = {
 };
 
 const ps = {
-  wrap: { maxWidth: 560, fontFamily: FONT, width: "100%" },
+  wrap: { maxWidth: 560, fontFamily: FONT, width: "100%", margin: "0 auto" },
   trackList: { marginBottom: 8 },
   trackRow: {
     display: "flex", alignItems: "center", gap: 12, padding: "6px 0",
@@ -994,7 +1020,7 @@ const s = {
   galleryImg: { width: "100%", aspectRatio: "1", objectFit: "cover" },
   galleryCaption: { fontSize: 12, color: "#444" },
   galleryDate: { fontSize: 11, color: "#aaa" },
-  merchImg: { width: "clamp(200px, 60vw, 400px)", height: "clamp(200px, 60vw, 400px)", objectFit: "cover" },
+  merchImg: { width: "clamp(200px, 60vw, 400px)", height: "auto", objectFit: "contain" },
   merchList: { display: "flex", flexDirection: "column", gap: 0 },
   merchRow: {
     display: "flex", flexDirection: "column", alignItems: "center",
@@ -1022,7 +1048,28 @@ const s = {
   },
   venueIcon: { fontSize: 10, opacity: 0.5 },
   showCity: { color: "#888" },
-  linkWrap: { marginTop: 16 },
+  linkWrap: { marginTop: 16, textAlign: "center" },
+  ytRow: {
+    display: "flex", gap: 20, flexWrap: "wrap", marginTop: 20,
+    justifyContent: "center", width: "100%",
+  },
+  ytCard: {
+    display: "block", flex: "0 1 260px", maxWidth: 280,
+    textDecoration: "none", color: "#000",
+  },
+  ytThumbWrap: {
+    position: "relative", width: "100%", aspectRatio: "16/9",
+    overflow: "hidden", borderRadius: 8, border: "1px solid #eee",
+  },
+  ytThumb: { width: "100%", height: "100%", objectFit: "cover", display: "block" },
+  ytPlayBtn: {
+    position: "absolute", top: "50%", left: "50%",
+    transform: "translate(-50%, -50%)", display: "flex",
+  },
+  ytLabel: {
+    display: "block", fontFamily: FONT, fontSize: 13, textAlign: "center",
+    color: "#000", marginTop: 10, borderBottom: "1px solid #000", paddingBottom: 1,
+  },
   link: { fontFamily: FONT, fontSize: 13, color: "#000", textDecoration: "none", borderBottom: "1px solid #000", paddingBottom: 1 },
   newsletterRow: { display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" },
   newsletterInput: {
