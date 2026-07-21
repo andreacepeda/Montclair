@@ -1,12 +1,15 @@
 //link to the music video?
 //frog cursor
 //stripe links!
-//subscribe button
+//individual phtos loaded in john (s) ?
+//chronological order for the gallery 
+
 
 import { useState, useEffect, useRef } from "react";
 
 const FONT = "'Menlo', monospace";
 
+//update montcalir mix
 const TRACKS = [
   {
     id: 1,
@@ -47,12 +50,6 @@ const SHOWS = [
     venue: "Marketplace at Avalon",
     city: "Orlando, FL",
     mapsLink: "https://maps.app.goo.gl/pSfw2R9Hyu19kBvx6",
-  },
-  {
-    date: "August 31, 2026",
-    venue: "surprise location",
-    city: "Orlando, FL",
-    mapsLink: "https://luma.com/skh8jmci?utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv3&utm_medium=social&utm_source=ig",
   },
   {
     date: "September 4/5, 2026",
@@ -119,7 +116,7 @@ const GALLERY = [
   { id: 15, imgs: ["/m4ldigi2.JPG"], description: "montclair's #1 fan", date: "02-28-2026" },
   { id: 16, imgs: ["/boblawn.JPG"], description: "mill's lawn", date: "02-28-2026" },
   { id: 17, imgs: ["/bobset6.JPG"], description: "******", date: "02-28-2026" },
-  { id: 18, imgs: ["/laundromog.JPG"], description: "laundromog", date: "02-12-2026" },
+  { id: 18, imgs: ["/laundromog.JPG"], description: "*****", date: "02-12-2026" },
   { id: 19, imgs: ["/sleepy.JPG"], description: "*****", date: "05-09-2026" },
   { id: 20, imgs: ["/sleepy2.JPG"], description: "naptime", date: "05-09-2026" },
   { id: 21, imgs: ["/notes.JPG"], description: "******", date: "05-04-2026" },
@@ -135,8 +132,8 @@ const GALLERY = [
   { id: 31, imgs: ["/BOTBSetlist.JPG"], description: "setlist", date: "02-28-2026" },
   { id: 32, imgs: ["/cowvocals.JPG"], description: "moo", date: "12-12-2025" },
   { id: 33, imgs: ["/yellowpiano.JPG"], description: "*****", date: "09-29-2025" },
-  { id: 34, imgs: ["/montclairfirst.JPG"], description: "first show", date: "01-15-2026" },
-  { id: 29, imgs: ["/montclairfirst2.JPG"], description: "stardust", date: "01-15-2026" }
+  { id: 34, imgs: ["/montclairfirst.JPG"], description: "*****", date: "01-15-2026" },
+  { id: 29, imgs: ["/montclairfirst2.JPG"], description: "*****", date: "01-15-2026" }
 ];
 
 const MERCH_EMAIL = "bandmontclair@gmail.com";
