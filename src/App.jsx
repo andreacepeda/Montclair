@@ -167,8 +167,10 @@ function FrogCursor() {
     if (!mq.matches) return;
     setEnabled(true);
 
-    const prevCursor = document.documentElement.style.cursor;
-    document.documentElement.style.cursor = "none";
+    const styleTag = document.createElement("style");
+    styleTag.setAttribute("data-frog-cursor", "true");
+    styleTag.textContent = "* { cursor: none !important; }";
+    document.head.appendChild(styleTag);
 
     const handleMove = (e) => {
       target.current = { x: e.clientX, y: e.clientY };
@@ -199,7 +201,7 @@ function FrogCursor() {
     raf = requestAnimationFrame(tick);
 
     return () => {
-      document.documentElement.style.cursor = prevCursor;
+      styleTag.remove();
       document.removeEventListener("mousemove", handleMove);
       document.removeEventListener("mouseleave", handleLeave);
       document.removeEventListener("mouseenter", handleEnter);
