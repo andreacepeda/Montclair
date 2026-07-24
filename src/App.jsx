@@ -1,4 +1,3 @@
-//frog cursor
 //stripe links!
 //update montcalir mix
 
@@ -155,6 +154,87 @@ function parseGalleryDate(d) {
   return new Date(year, month - 1, day).getTime();
 }
 
+function FrogCursor() {
+  const dotRef = useRef(null);
+  const pos = useRef({ x: -100, y: -100 });
+  const target = useRef({ x: -100, y: -100 });
+  const clickingRef = useRef(false);
+  const [visible, setVisible] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: fine)");
+    if (!mq.matches) return;
+    setEnabled(true);
+
+    const prevCursor = document.documentElement.style.cursor;
+    document.documentElement.style.cursor = "none";
+
+    const handleMove = (e) => {
+      target.current = { x: e.clientX, y: e.clientY };
+      setVisible(true);
+    };
+    const handleLeave = () => setVisible(false);
+    const handleEnter = () => setVisible(true);
+    const handleDown = () => { clickingRef.current = true; };
+    const handleUp = () => { clickingRef.current = false; };
+
+    document.addEventListener("mousemove", handleMove);
+    document.addEventListener("mouseleave", handleLeave);
+    document.addEventListener("mouseenter", handleEnter);
+    document.addEventListener("mousedown", handleDown);
+    document.addEventListener("mouseup", handleUp);
+
+    let raf;
+    const tick = () => {
+      pos.current.x += (target.current.x - pos.current.x) * 0.28;
+      pos.current.y += (target.current.y - pos.current.y) * 0.28;
+      const squish = clickingRef.current ? 0.72 : 1;
+      if (dotRef.current) {
+        dotRef.current.style.transform =
+          `translate(${pos.current.x}px, ${pos.current.y}px) translate(-50%, -50%) scale(${squish})`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      document.documentElement.style.cursor = prevCursor;
+      document.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("mouseleave", handleLeave);
+      document.removeEventListener("mouseenter", handleEnter);
+      document.removeEventListener("mousedown", handleDown);
+      document.removeEventListener("mouseup", handleUp);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  if (!enabled) return null;
+
+  return (
+    <div
+      ref={dotRef}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        zIndex: 9999,
+        pointerEvents: "none",
+        opacity: visible ? 1 : 0,
+        transition: "opacity 0.15s ease",
+        willChange: "transform",
+      }}
+    >
+      <img
+        src="/frog-cursor.png"
+        alt=""
+        draggable={false}
+        style={{ display: "block", width: 32, height: 32, imageRendering: "pixelated" }}
+      />
+    </div>
+  );
+}
+
 function Slideshow({ items, startIndex, onClose }) {
   const [index, setIndex] = useState(startIndex);
   const item = items[index];
@@ -189,6 +269,7 @@ function MerchDetail({ item, onBack }) {
   const [activeImg, setActiveImg] = useState(0);
   return (
     <div style={d.root}>
+      <FrogCursor />
       <nav style={d.nav}>
         <button style={d.backBtn} onClick={onBack}>← back to shop</button>
       </nav>
@@ -675,6 +756,7 @@ export default function Montclair() {
 
   return (
     <div style={s.root}>
+      <FrogCursor />
       {slideshowIndex !== null && (
         <Slideshow items={sortedGallery} startIndex={slideshowIndex} onClose={() => setSlideshowIndex(null)} />
       )}
