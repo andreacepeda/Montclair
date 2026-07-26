@@ -76,7 +76,7 @@ const MERCH = [
     id: "shirt",
     name: "Montclair is for Lovers Shirt",
     price: "$25",
-    stripeLink: "",
+    stripeLink: "price_1Tvf7C3Gm5v9jtYGDTb16nn5",
     imgs: ["/MontclairShirt.JPG", "/montclairtee.JPG"],
     description: "a way for those who don't have a cd or cassette player to be included.",
   },
@@ -85,55 +85,55 @@ const MERCH = [
     name: "Montclair EP — CD",
     price: "$10",
     stripeLink: "price_1TvfIv3Gm5v9jtYGQgCLFJnq",
-    imgs: ["/CDFront.JPG","CDinside.JPG", "/CDBack.JPG"],
+    imgs: ["/CDFront.JPG","/CDinside.JPG", "/CDBack.JPG"],
     description: "4 cool tracks for you to enjoy, if you have a cd player.",
   },
   {
     id: "cassette",
     name: "Montclair EP — Cassette",
     price: "$10",
-    stripeLink: "",
+    stripeLink: "price_1TvfK03Gm5v9jtYGcAJCTOo2",
     imgs: ["/CassetteBack.JPG", "/CassetteFront.JPG"],
     description: "4 cool tracks for you to enjoy, if you have a cassette player.",
   },
 ];
 
 const GALLERY = [
-  { id: 1, imgs: ["/SillyBand.JPG"], description: "five veterans post war", date: "05-08-2026" },
-  { id: 2, imgs: ["/Balloons.JPG"], description: "******", date: "05-01-2026" },
-  { id: 3, imgs: ["/anotherCandid.JPG"], description: "******", date: "05-08-2026" },
-  { id: 4, imgs: ["/areaClosed.JPG"], description: "******", date: "04-19-2026" },
-  { id: 5, imgs: ["/redNwhite2.JPG"], description: "montclair", date: "02-22-2026" },
-  { id: 6, imgs: ["/bobfull.JPG"], description: "******", date: "02-28-2026" },
-  { id: 7, imgs: ["/bobadjust3.JPG"], description: "******", date: "02-28-2026" },
-  { id: 8, imgs: ["/bobadjust4.JPG"], description: "******", date: "02-28-2026" },
-  { id: 9, imgs: ["/bobsolo.JPG"], description: "******", date: "02-28-2026" },
-  { id: 10, imgs: ["/bobsolo4.JPG"], description: "******", date: "02-28-2026" },
-  { id: 11, imgs: ["/bobsolo5.JPG"], description: "******", date: "02-28-2026" },
-  { id: 12, imgs: ["/bobsolo9.JPG"], description: "******", date: "02-28-2026" },
-  { id: 13, imgs: ["/bobadjust5.JPG"], description: "******", date: "02-28-2026" },
-  { id: 14, imgs: ["/bobset5.JPG"], description: "******", date: "02-28-2026" },
-  { id: 15, imgs: ["/m4ldigi2.JPG"], description: "******", date: "02-28-2026" },
-  { id: 16, imgs: ["/boblawn.JPG"], description: "mill's lawn", date: "02-28-2026" },
-  { id: 17, imgs: ["/bobset6.JPG"], description: "******", date: "02-28-2026" },
-  { id: 18, imgs: ["/laundromog.JPG"], description: "******", date: "02-12-2026" },
-  { id: 19, imgs: ["/sleepy.JPG"], description: "******", date: "05-09-2026" },
-  { id: 20, imgs: ["/sleepy2.JPG"], description: "naptime", date: "05-09-2026" },
-  { id: 21, imgs: ["/notes.JPG"], description: "******", date: "05-04-2026" },
-  { id: 22, imgs: ["/balloons3.JPG"], description: "******", date: "05-08-2026" },
-  { id: 23, imgs: ["/piano.JPG"], description: "******", date: "06-10-2026" },
-  { id: 24, imgs: ["/piano2.JPG"], description: "******", date: "06-11-2026" },
-  { id: 25, imgs: ["/swan.JPG"], description: "******", date: "04-19-2026" },
-  { id: 26, imgs: ["/tree.JPG"], description: "******", date: "04-19-2026" },
-  { id: 27, imgs: ["/tree2.JPG"], description: "******", date: "04-19-2026" },
-  { id: 28, imgs: ["/gatsoriginal.JPG"], description: "******", date: "06-05-2026" },
-  { id: 29, imgs: ["/notes2.JPG"], description: "MoneyWoize", date: "04-25-2026" },
-  { id: 30, imgs: ["/madbeach.JPG"], description: "madeira beach", date: "09-13-2025" },
-  { id: 31, imgs: ["/BOTBSetlist.JPG"], description: "******", date: "02-28-2026" },
-  { id: 32, imgs: ["/cowvocals.JPG"], description: "moo", date: "12-12-2025" },
-  { id: 33, imgs: ["/yellowpiano.JPG"], description: "******", date: "09-29-2025" },
-  { id: 34, imgs: ["/montclairfirst.JPG"], description: "******", date: "01-15-2026" },
-  { id: 29, imgs: ["/montclairfirst2.JPG"], description: "******", date: "01-15-2026" }
+  { id: 1, imgs: ["/SillyBand.JPG"],        description: "five veterans post war", date: "05-08-2026" },
+  { id: 2, imgs: ["/Balloons.JPG"],         description: "******",                 date: "05-01-2026" },
+  { id: 3, imgs: ["/anotherCandid.JPG"],    description: "******",                 date: "05-08-2026" },
+  { id: 4, imgs: ["/areaClosed.JPG"],       description: "******",                 date: "04-19-2026" },
+  { id: 5, imgs: ["/redNwhite2.JPG"],       description: "montclair",              date: "02-22-2026" },
+  { id: 6, imgs: ["/bobfull.JPG"],          description: "******",                 date: "02-28-2026" },
+  { id: 7, imgs: ["/bobadjust3.JPG"],       description: "******",                 date: "02-28-2026" },
+  { id: 8, imgs: ["/bobadjust4.JPG"],       description: "******",                 date: "02-28-2026" },
+  { id: 9, imgs: ["/bobsolo.JPG"],          description: "******",                 date: "02-28-2026" },
+  { id: 10, imgs: ["/bobsolo4.JPG"],        description: "******",                 date: "02-28-2026" },
+  { id: 11, imgs: ["/bobsolo5.JPG"],        description: "******",                 date: "02-28-2026" },
+  { id: 12, imgs: ["/bobsolo9.JPG"],        description: "******",                 date: "02-28-2026" },
+  { id: 13, imgs: ["/bobadjust5.JPG"],      description: "******",                 date: "02-28-2026" },
+  { id: 14, imgs: ["/bobset5.JPG"],         description: "******",                 date: "02-28-2026" },
+  { id: 15, imgs: ["/m4ldigi2.JPG"],        description: "******",                 date: "02-28-2026" },
+  { id: 16, imgs: ["/boblawn.JPG"],         description: "mill's lawn",            date: "02-28-2026" },
+  { id: 17, imgs: ["/bobset6.JPG"],         description: "******",                 date: "02-28-2026" },
+  { id: 18, imgs: ["/laundromog.JPG"],      description: "******",                 date: "02-12-2026" },
+  { id: 19, imgs: ["/sleepy.JPG"],          description: "******",                 date: "05-09-2026" },
+  { id: 20, imgs: ["/sleepy2.JPG"],         description: "naptime",                date: "05-09-2026" },
+  { id: 21, imgs: ["/notes.JPG"],           description: "******",                 date: "05-04-2026" },
+  { id: 22, imgs: ["/balloons3.JPG"],       description: "******",                 date: "05-08-2026" },
+  { id: 23, imgs: ["/piano.JPG"],           description: "******",                 date: "06-10-2026" },
+  { id: 24, imgs: ["/piano2.JPG"],          description: "******",                 date: "06-11-2026" },
+  { id: 25, imgs: ["/swan.JPG"],            description: "******",                 date: "04-19-2026" },
+  { id: 26, imgs: ["/tree.JPG"],            description: "******",                 date: "04-19-2026" },
+  { id: 27, imgs: ["/tree2.JPG"],           description: "******",                 date: "04-19-2026" },
+  { id: 28, imgs: ["/gatsoriginal.JPG"],    description: "******",                 date: "06-05-2026" },
+  { id: 29, imgs: ["/notes2.JPG"],          description: "MoneyWoize",             date: "04-25-2026" },
+  { id: 30, imgs: ["/madbeach.JPG"],        description: "madeira beach",          date: "09-13-2025" },
+  { id: 31, imgs: ["/BOTBSetlist.JPG"],     description: "******",                 date: "02-28-2026" },
+  { id: 32, imgs: ["/cowvocals.JPG"],       description: "moo",                    date: "12-12-2025" },
+  { id: 33, imgs: ["/yellowpiano.JPG"],     description: "******",                 date: "09-29-2025" },
+  { id: 34, imgs: ["/montclairfirst.JPG"],  description: "******",                 date: "01-15-2026" },
+  { id: 29, imgs: ["/montclairfirst2.JPG"], description: "******",                 date: "01-15-2026" },
 ];
 
 const MERCH_EMAIL = "bandmontclair@gmail.com";
@@ -152,6 +152,18 @@ function getYoutubeId(url) {
 function parseGalleryDate(d) {
   const [month, day, year] = d.split("-").map(Number);
   return new Date(year, month - 1, day).getTime();
+}
+
+async function startCheckout(priceId, quantity = 1) {
+  const res = await fetch("/api/create-checkout-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ priceId, quantity }),
+  });
+  if (!res.ok) throw new Error("checkout session request failed");
+  const data = await res.json();
+  if (!data.url) throw new Error("no checkout url returned");
+  window.location.href = data.url;
 }
 
 function FrogCursor() {
@@ -269,6 +281,23 @@ function Slideshow({ items, startIndex, onClose }) {
 
 function MerchDetail({ item, onBack }) {
   const [activeImg, setActiveImg] = useState(0);
+  const [checkingOut, setCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
+
+  const hasStripeLink = Boolean(item.stripeLink);
+
+  const handleBuy = async () => {
+    if (!hasStripeLink || checkingOut) return;
+    setCheckingOut(true);
+    setCheckoutError("");
+    try {
+      await startCheckout(item.stripeLink, 1);
+    } catch (e) {
+      setCheckoutError("something went wrong starting checkout — try again?");
+      setCheckingOut(false);
+    }
+  };
+
   return (
     <div style={d.root}>
       <FrogCursor />
@@ -294,9 +323,17 @@ function MerchDetail({ item, onBack }) {
           <h1 style={d.name}>{item.name}</h1>
           <p style={d.price}>{item.price}</p>
           <p style={d.description}>{item.description}</p>
-          <a href={item.stripeLink} target="_blank" rel="noopener noreferrer" style={d.buyBtn}>
-            buy — {item.price} →
-          </a>
+          <button
+            onClick={handleBuy}
+            disabled={!hasStripeLink || checkingOut}
+            style={{
+              ...d.buyBtn,
+              ...(!hasStripeLink ? d.buyBtnDisabled : {}),
+            }}
+          >
+            {checkingOut ? "redirecting…" : hasStripeLink ? `buy — ${item.price} →` : "coming soon"}
+          </button>
+          {checkoutError && <p style={d.checkoutError}>{checkoutError}</p>}
         </div>
       </div>
     </div>
@@ -994,6 +1031,12 @@ const d = {
     color: "#fff", background: "#000", border: "none",
     padding: "10px 20px", cursor: "pointer", borderRadius: 6,
     textDecoration: "none", alignSelf: "flex-start", marginTop: 8,
+  },
+  buyBtnDisabled: {
+    background: "#ccc", color: "#888", cursor: "not-allowed",
+  },
+  checkoutError: {
+    fontSize: 12, color: "#e05c5c", fontFamily: FONT, margin: 0,
   },
 };
 
