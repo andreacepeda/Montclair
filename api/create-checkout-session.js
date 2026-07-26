@@ -17,17 +17,13 @@ export default async function handler(req, res) {
   const qty = Number.isInteger(quantity) && quantity > 0 ? quantity : 1;
 
   try {
-    const origin =
-      req.headers.origin || `https://${req.headers.host}`;
+    const origin = req.headers.origin || `https://${req.headers.host}`;
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: qty }],
       success_url: `${origin}/?checkout=success`,
       cancel_url: `${origin}/?checkout=canceled`,
-      shipping_address_collection: {
-        allowed_countries: ["US"],
-      },
     });
 
     return res.status(200).json({ url: session.url });
