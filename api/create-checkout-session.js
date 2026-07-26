@@ -24,6 +24,7 @@ export default async function handler(req, res) {
       line_items: [{ price: priceId, quantity: qty }],
       success_url: `${origin}/?checkout=success`,
       cancel_url: `${origin}/?checkout=canceled`,
+      managed_payments: { enabled: false },
     });
 
     return res.status(200).json({ url: session.url });
