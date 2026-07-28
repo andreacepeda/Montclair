@@ -1,6 +1,3 @@
-//stripe links!
-//update montcalir mix
-
 import { useState, useEffect, useRef } from "react";
 
 const FONT = "'Menlo', monospace";
@@ -9,7 +6,7 @@ const TRACKS = [
   {
     id: 1,
     title: "Montclair Mix",
-    duration: 1186,
+    duration: 841,
     src: "/MontclairMix.mp3",
     spotify: "https://open.spotify.com/artist/07GSo1Xpteoar0y8i1sMHu?si=mBL9IlzvSdCnCiXTZ5VMfQ",
     youtube: null,
