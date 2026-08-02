@@ -20,11 +20,6 @@ const YOUTUBE_VIDEOS = [
 
 const SHOWS = [
   {
-    date: "July 31, 2026",
-    venue: "surprise location",
-    city: "Orlando, FL",
-    mapsLink: null,
-  },{
     date: "August 6, 2026",
     venue: "Imperial Wine Bar",
     city: "Orlando, FL",
@@ -37,19 +32,19 @@ const SHOWS = [
     mapsLink: "https://maps.app.goo.gl/KL3inLCJmnCSzQWM6",
   },
   {
+    date: "August 26, 2026",
+    venue: "My Sisters House",
+    city: "Orlando, FL",
+    mapsLink: "https://maps.app.goo.gl/WpzAKkc1wxufuh83A"
+  },
+  {
     date: "August 27, 2026",
     venue: "Hillcrest Coffee",
     city: "Lakeland, FL",
     mapsLink: "https://maps.app.goo.gl/YhfDXv81WvHBUoWS6",
   },
   {
-    date: "August 28, 2026",
-    venue: "Marketplace at Avalon",
-    city: "Orlando, FL",
-    mapsLink: "https://maps.app.goo.gl/pSfw2R9Hyu19kBvx6",
-  },
-  {
-    date: "September 4/5, 2026",
+    date: "September 5, 2026",
     venue: "Clancy Cantina",
     city: "New Smyrna, FL",
     mapsLink: "https://maps.app.goo.gl/xmYQKPi5uqbvW6449",
