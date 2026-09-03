@@ -30,7 +30,7 @@ const SHOWS = [
     venue: "Pinesmoke Bee Co.",
     city: "Eutis, FL",
     mapsLink: "https://maps.app.goo.gl/dL3corZKBtUHeL7A9",
-  }
+  },
   {
     date: "October 18, 2026",
     venue: "Lil Indies",
