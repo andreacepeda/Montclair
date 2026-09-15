@@ -20,12 +20,6 @@ const YOUTUBE_VIDEOS = [
 
 const SHOWS = [
   {
-    date: "September 5, 2026",
-    venue: "Clancy Cantina",
-    city: "New Smyrna, FL",
-    mapsLink: "https://maps.app.goo.gl/xmYQKPi5uqbvW6449",
-  },
-  {
     date: "September 19, 2026",
     venue: "Pinesmoke Bee Co.",
     city: "Eutis, FL",
@@ -43,6 +37,30 @@ const SHOWS = [
     city: "Orlando, FL",
     mapsLink: null,
   },
+  {
+    date: "January 12, 2027",
+    venue: "Sarbez!",
+    city: "St. Augustine, FL",
+    mapsLink: "https://maps.app.goo.gl/mzknRoJs7FrQwAS58",
+  },
+  {
+    date: "January 13, 2027",
+    venue: "The Portal",
+    city: "Savannah, GA",
+    mapslink: "https://maps.app.goo.gl/Dg85jEu7zZxHbE7g6"
+  },
+  {
+    date: "January 15, 2027",
+    venue: "The Albatross",
+    city: "Jacksonville, FL",
+    mapslink: "https://maps.app.goo.gl/Tu7fPQse3eBrqv1c8"
+  },
+  {
+    date: "January 16, 2027",
+    venue: "Austin's Coffee",
+    city: "Orlando, FL",
+    mapslink: "https://maps.app.goo.gl/L1VrAp9y7ytPDpQh9"
+  }
 ];
 
 const MERCH = [
